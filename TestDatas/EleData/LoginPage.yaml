@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# @File    : LoginPage.yaml
+# @Date    : 2024/10/15 8:41
+# @Author  : ggn
+
+path: '/login'
+username_selector: '//input[@id="username"]'
+password_selector: '//input[@id="password"]'
+login_button_selector: '//a[@id="loginForm_su"]'

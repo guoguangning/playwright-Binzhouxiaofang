@@ -1,0 +1,10 @@
+# -*- coding: utf-8 -*-
+# @File    : TestAddProjects.yaml
+# @Date    : 2024/10/16 10:42
+# @Author  : ggn
+-
+  expected: '//*[@id="swal2-content"]'
+  expected_text: '新建建设工程消防设计审查完成，系统已将该项目发送至帮办人员进行帮办，帮办完成后请点击流程中【S2】填写《特殊建设工程消防设计审查申请表》。'
+  iframe: '//*[@id="layui-layer-iframe1"]'
+  expected_text_inspection: '新建建设工程消防验收完成，点击【关闭】后，请点击流程中的【Y1】填写《特殊建设工程消防验收申请表》。'
+  expected_text_record: '新建建设工程消防备案完成，点击【关闭】后，请点击流程中的【B1】填写《建设工程消防验收备案表》。'

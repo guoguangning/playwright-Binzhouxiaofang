@@ -1,0 +1,41 @@
+# -*- coding: utf-8 -*-
+# @File    : AddProjectsPage.yaml
+# @Date    : 2024/10/15 16:24
+# @Author  : ggn
+
+path: '/selectSystem?type=2'
+xf: '//*[@id="xf"]'  # 进入消防
+
+new_construction_design_review: '//*[@id="nav"]/li[2]/ul/li[1]/a'  # 新建建设工程消防设计审查
+new_inspection: '//*[@id="nav"]/li[2]/ul/li[2]/a'  # 新建建设工程消防验收
+new_record: '//*[@id="nav"]/li[2]/ul/li[3]/a'  # 新建建设工程消防备案
+
+iframe: '//*[@id="layui-layer-iframe1"]'
+
+select_project_name: '//div[@class="content"]/div[1]/div[1]/div/div/span[1]'  #选择项目
+select_project: '//div[text()="*-BZ-20241016-051"]'
+confirm_button: '//div[@class="dialog-footer"]/button[1]'
+
+select_engineering_name: '//div[@class="content"]/div[1]/div[2]/div/div/span[1]' # 选择工程
+select_engineering: '//div[text()="*-BZ-20241016-051-001"]'
+confirm_engineering_button: '//div[@class="dialog-footer"]/button[1]'
+
+category: '新建扩建改建'  # 类别 新建扩建改建
+select_category: '新'
+#select_category: '改'
+
+using_properties: '//*[@id="vue_div"]/form/div/div/div[4]/div/div/div/div/div/input' # 建筑工程使用属性
+select_using_properties: '//span[text()="房屋建筑工程"]'  #
+
+related_matters: '//div[@class="el-table__body-wrapper is-scrolling-none"]/table/tbody/tr[1]/td[1]' # 关联政务网事项
+
+add_construction_design_review_button: '//*[@id="vue_div"]/div[1]/button[text()="创建完毕并发送至帮办"]'
+added: '//*[@id="vue_div"]/div[1]/button[text()="创建完毕"]'  # 新建建设工程消防验收 新建建设工程消防备案
+
+expected: '//div[@class="el-message-box__message"]/p'
+expected_text: '确定发起消防设施安装工程消防设施安装-1的消防设计审查吗？点击[确定]后，系统将该项目发送至帮办人员进行帮办。'  # 新建建设工程消防设计审查
+expected_text_inspection: '确定发起消防设施安装工程消防设施安装-1的消防验收吗？' # 新建建设工程消防验收
+expected_text_record: '确定发起消防设施安装工程消防设施安装-1的消防备案吗？' # 新建建设工程消防备案
+
+ok_button: '//div[@class="el-message-box__btns"]/button[2]' # 创建确认按钮
+cancel_button: '//div[@class="el-message-box__btns"]/button[1]' # 创建取消按钮
