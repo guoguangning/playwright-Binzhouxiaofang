@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# @File    : TestDeputy.yaml
+# @Date    : 2024/10/17 10:58
+# @Author  : ggn
+-
+  value: '帮办建议'
+  iframe: ['//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
+  expected: '//h2[@id="swal2-title"]'
+  expected_text: '帮办完成'

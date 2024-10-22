@@ -35,24 +35,38 @@ class BasePage:
         点击元素
         :param locators: 传入单个元素定位器或多个元素定位器的列表
         :param frame_locator: 传入frame框架的定位器，如果没有传入，则一般点击
-        :return:
+        :return: None
         """
-        # 如果传入的是单个 locator，将其转换为列表
         if isinstance(locators, str):
-            locators = [locators]
-
-        for locator in locators:
+            # 单个元素定位器的处理逻辑
             try:
-                self._ele_to_be_visible_force(locator, frame_locator)
-                target = self._get_target_locator(locator, frame_locator)
-                target.click()
-                return  # 如果点击成功，退出函数
+                self._ele_to_be_visible_force(locators, frame_locator)  # 确保元素可见
+                target = self._get_target_locator(locators, frame_locator)  # 获取目标定位器
+                target.click()  # 点击目标元素
+                logger.info(f"成功点击元素: {locators}")  # 记录成功信息
+                return  # 点击成功，退出函数
             except Exception as e:
-                logger.warning(f"尝试点击 {locator} 失败: {e}")
+                logger.error(f"尝试点击 {locators} 失败: {e}")  # 记录失败信息
+                raise Exception(f"元素 {locators} 点击失败")
+        elif isinstance(locators, list):
+            # 多个元素定位器的处理逻辑
+            for locator in locators:
+                try:
+                    self._ele_to_be_visible_force(locator, frame_locator)  # 确保元素可见
+                    target = self._get_target_locator(locator, frame_locator)  # 获取目标定位器
+                    target.click()  # 点击目标元素
+                    logger.info(f"成功点击元素: {locator}")  # 记录成功信息
+                    return  # 点击成功，退出函数
+                except Exception as e:
+                    logger.warning(f"尝试点击 {locator} 失败: {e}")  # 记录失败信息
 
-        # 如果所有 locator 都尝试过但没有一个成功，抛出异常
-        logger.error("所有元素点击失败")
-        raise Exception("所有元素点击失败")
+            # 所有 locator 都尝试过但没有一个成功，抛出异常
+            logger.error("所有元素点击失败")
+            raise Exception("所有元素点击失败")
+        else:
+            # 处理无效的 locators 类型
+            logger.error("传入的 locators 类型无效")
+            raise TypeError("locators 必须是字符串或列表")
 
     def _hover(self, locator: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -350,24 +364,16 @@ class BasePage:
 
         if isinstance(frame_locators, str):
             # 处理一层 iframe
-            if locator:
-                return self.page.frame_locator(frame_locators).locator(locator)
-            else:
-                return self.page.frame_locator(frame_locators)
+            return self.page.frame_locator(frame_locators).locator(locator) if locator else self.page.frame_locator(
+                frame_locators)
 
-        # 处理多层 iframe
-        current_frame_locator = frame_locators[0]
-        current_frame = self.page.frame_locator(current_frame_locator)
+            # 处理多层 iframe
+        current_frame_locator = self.page.frame_locator(frame_locators[0])
 
-        if len(frame_locators) > 1:
-            # 递归调用处理多层 iframe
-            if locator:
-                return self._get_target_locator(locator, frame_locators[1:])
-            else:
-                return self._get_target_locator(frame_locators=frame_locators[1:])
+        for frame_locator in frame_locators[1:]:
+            current_frame_locator = current_frame_locator.frame_locator(frame_locator)
 
-        # 最后一层 iframe
-        return current_frame.locator(locator) if locator else current_frame
+        return current_frame_locator.locator(locator) if locator else current_frame_locator
 
     @staticmethod
     def get_current_time_format():
