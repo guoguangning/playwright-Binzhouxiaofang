@@ -30,20 +30,29 @@ class BasePage:
             logger.error(f"Cannot navigate to page: {e}")
             raise
 
-    def _click(self, locator: str, frame_locator: Optional[str] = None) -> None:
+    def _click(self, locators: Union[str, List[str]], frame_locator: Optional[str] = None) -> None:
         """
         点击元素
-        :param locator: 传入元素定位器
-        :param frame_locator: 传入frame框架的的定位器，如果没有传入，则一般点击
+        :param locators: 传入单个元素定位器或多个元素定位器的列表
+        :param frame_locator: 传入frame框架的定位器，如果没有传入，则一般点击
         :return:
         """
-        try:
-            self._ele_to_be_visible_force(locator, frame_locator)
-            target = self._get_target_locator(locator, frame_locator)
-            target.click()
-        except Exception as e:
-            logger.error(f"点击失败: {e}")
-            raise
+        # 如果传入的是单个 locator，将其转换为列表
+        if isinstance(locators, str):
+            locators = [locators]
+
+        for locator in locators:
+            try:
+                self._ele_to_be_visible_force(locator, frame_locator)
+                target = self._get_target_locator(locator, frame_locator)
+                target.click()
+                return  # 如果点击成功，退出函数
+            except Exception as e:
+                logger.warning(f"尝试点击 {locator} 失败: {e}")
+
+        # 如果所有 locator 都尝试过但没有一个成功，抛出异常
+        logger.error("所有元素点击失败")
+        raise Exception("所有元素点击失败")
 
     def _hover(self, locator: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -60,21 +69,32 @@ class BasePage:
             logger.error(f"悬停失败: {e}")
             raise
 
-    def _fill(self, locator: str, value: str, frame_locator: Optional[str] = None) -> None:
+    def _fill(self, locator: Union[str, List[str]], value: str, frame_locator: Optional[str] = None) -> None:
         """
         定位元素，输入内容
-        :param locator:传入元素定位器
-        :param value:传入输入的值
+        :param locator: 传入单个元素定位器或多个元素定位器列表
+        :param value: 传入输入的值
         :param frame_locator: 传入frame框架
         :return:
         """
-        try:
-            target = self._get_target_locator(locator, frame_locator)
-            target.click()
-            target.fill(value)
-        except Exception as e:
-            logger.error(f"输入失败: {e}")
-            raise
+        # 如果传入的是单个定位器，将其转换为列表
+        if isinstance(locator, str):
+            locators = [locator]
+        else:
+            locators = locator
+
+        for loc in locators:
+            try:
+                target = self._get_target_locator(loc, frame_locator)
+                target.click()
+                target.fill(value)
+                return  # 成功填充后退出函数
+            except Exception as e:
+                logger.warning(f"定位器 {loc} 失败: {e}")
+
+        # 如果所有定位器都失败，则抛出异常
+        logger.error("所有定位器均失败，输入失败")
+        raise Exception("所有定位器均失败，输入失败")
 
     def _type(self, locator: str, value: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -154,7 +174,7 @@ class BasePage:
             logger.info("{date_to_select}")
 
             # 寻找并选择当前日期
-            date_element = self.page.get_by_text(date_to_select, exact=True)
+            date_element = self._get_target_locator(frame_locator).get_by_text(date_to_select, exact=True)
             if date_element.count() > 0:  # 确保找到元素
                 date_element.click()
             else:
@@ -169,6 +189,7 @@ class BasePage:
 
         :param category_text: 下拉框类别文本，例如 "类别：新建装修建筑保温用途变更扩建其他"
         :param options: 需要选择的选项，例如 "新建", "建筑保温"
+        :param frame_locator:提供的 frame 框架
         """
         try:
             # 创建选择器，考虑是否有 frame
@@ -188,6 +209,41 @@ class BasePage:
         except Exception as e:
             logger.error(f"选项选择失败: {e}")
             raise  # 重新抛出异常以便外部捕获和处理
+
+    def select_option(self, select_locator: str, options: Union[str, List[str]], frame_locator: Optional[str] = None):
+        """选择下拉框选项
+        :param select_locator: 下拉框定位器
+        :param options:需要选择的选项
+        :param frame_locator: 提供的 frame 框架
+        """
+        logger.info(f"开始选择下拉框选项: {select_locator}, 选项: {options}")
+
+        # 动态等待元素加载
+        self._ele_to_be_visible_force(select_locator, frame_locator)
+        target_locator = self._get_target_locator(select_locator, frame_locator)
+
+        try:
+            if isinstance(options, list):
+                # 多选下拉框
+                selected_options = []
+                for option in options:
+                    if not isinstance(option, str):
+                        raise ValueError(f"每个选项值必须是字符串，但收到: {option}")
+                    selected_options.append(option)
+
+                logger.info(f"选择多选下拉框选项: {options}")
+                target_locator.select_option(*selected_options)
+            else:
+                # 单选下拉框
+                if not isinstance(options, str):
+                    raise ValueError("单选下拉框的选项值必须是字符串")
+
+                logger.info(f"选择单选下拉框选项: {options}")
+                target_locator.select_option(options)
+        except ValueError as e:
+            logger.error(f"选项值类型错误: {e}")
+        except Exception as e:
+            logger.error(f"选择选项 '{options}' 时发生未知错误: {e}")
 
     def _file(self, locator: str, files: Union[str, List[str]], frame_locator: Optional[str] = None) -> None:
         """
@@ -284,8 +340,39 @@ class BasePage:
             logger.error(f"Failed to take screenshot: {e}")
             return {"status": "failure", "message": str(e)}
 
-    def _get_target_locator(self, locator: str, frame_locator: Optional[str] = None) -> Locator:
-        """获取目标定位器"""
-        if frame_locator:
-            return self.page.frame_locator(frame_locator).locator(locator)
-        return self.page.locator(locator)
+    def _get_target_locator(self, locator: Optional[str] = None,
+                            frame_locators: Optional[Union[str, List[str]]] = None):
+        """获取目标定位器，支持一层或多层 iframe，locator 是非必填参数"""
+
+        if frame_locators is None:
+            # 如果没有提供 frame_locators，直接返回 page 的定位器
+            return self.page.locator(locator) if locator else self.page
+
+        if isinstance(frame_locators, str):
+            # 处理一层 iframe
+            if locator:
+                return self.page.frame_locator(frame_locators).locator(locator)
+            else:
+                return self.page.frame_locator(frame_locators)
+
+        # 处理多层 iframe
+        current_frame_locator = frame_locators[0]
+        current_frame = self.page.frame_locator(current_frame_locator)
+
+        if len(frame_locators) > 1:
+            # 递归调用处理多层 iframe
+            if locator:
+                return self._get_target_locator(locator, frame_locators[1:])
+            else:
+                return self._get_target_locator(frame_locators=frame_locators[1:])
+
+        # 最后一层 iframe
+        return current_frame.locator(locator) if locator else current_frame
+
+    @staticmethod
+    def get_current_time_format():
+        """ 获取当前时间并转换为 'HHMM' 格式 """
+        return datetime.now().strftime("%H%M")
+
+
+
