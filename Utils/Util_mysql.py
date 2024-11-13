@@ -17,7 +17,7 @@ logger = Logger("Util_mysql").get_log()
 class MySQLConnection:
     """MySQL数据库的连接及相关操作"""
 
-    def __init__(self, config_file=r"C:\case\playwright_BinZhouXiaoFang\Config.ini"):
+    def __init__(self, config_file=r"..\Config.ini"):
         """
         :param config_file: 配置文件路径
         """

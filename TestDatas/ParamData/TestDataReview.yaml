@@ -1,0 +1,18 @@
+# -*- coding: utf-8 -*-
+# @File    : TestDataReview.yaml
+# @Date    : 2024/11/13 10:53
+# @Author  : ggn
+
+-
+  iframe: ['//div[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
+  # 建设工程消防设计审查
+  expect: '//*[@id="swal2-title"]'
+  expect_text: '审核完成, 已提交至预生成文书阶段'
+
+  # 建设工程消防验收
+  expect_acceptance: '//*[@id="swal2-title"]'
+  expect_acceptance_text: '资料审核完成, 已提交至分配检查人员阶段'
+
+  # 建设工程消防验收备案
+  expect_record: '//*[@id="swal2-title"]'
+  expect_record_text: '资料审核完成, 已提交至抽取阶段'

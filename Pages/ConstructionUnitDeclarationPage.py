@@ -14,11 +14,11 @@ logger = Logger("ConstructionUnitDeclarationPage").get_log()
 class ConstructionUnitDeclarationPage(BasePage):
     """建设单位申报"""
     data = load_and_validate_yaml(
-        r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\ConstructionUnitDeclarationPage.yaml')
+        r'..\TestDatas\EleData\ConstructionUnitDeclarationPage.yaml')
     design_review_data = data[0]  # 消防设计审查
     acceptance_data = data[1]  # 消防验收
     registration_data = data[2]  # 消防备案
-    input_path = r'C:\case\playwright_BinZhouXiaoFang\TestFiles\case.pdf'
+    input_path = r'..\TestFiles\case.pdf'
 
     def goto_construction_unit_declaration(self):
         try:

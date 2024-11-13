@@ -1,0 +1,62 @@
+# -*- coding: utf-8 -*-
+# @File    : DataReviewPage.yaml
+# @Date    : 2024/11/13 10:13
+# @Author  : ggn
+
+# 主管部门资料审核
+-
+  # 建设工程消防设计审查
+  # 进入消防
+  path: '/selectSystem?type=2'
+  xf: '//*[@id="xf"]'
+
+  # 项目列表
+  construction_design_review_list: '//*[@id="nav"]/li[2]/ul/li[1]'
+
+  # 审查项目列表 进入项目页面
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
+
+  # 主管部门审核-S3
+  review_design_review: '//*[@id="app"]/form/div/div[2]/div[3]/div[2]/div[1]'  # iframe
+  # 生成凭证
+  iframe2: ['//div[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
+  generate_credentials: '//*[@id="shenhe"]/div[5]/button[6]' # iframe2
+
+  # 生成凭证并签章
+  iframe3: ['//div[@class="layui-tab-item layui-show"]/iframe',
+            '//*[@class="layui-layer-content"]/iframe',
+            '//*[@class="layui-layer-content"]/iframe']
+  generate_certificate_signature: '//*[@id="signature_b"]'
+  expect: '//*[@id="swal2-title"]'
+  expect_text: '确认生成凭证并签章？'
+  confirm_button: '//div[@class="swal2-actions"]/button[text()="确认"]'
+
+  expect_sig: '//*[@id="swal2-title"]'
+  expect_sig_text: '凭证签章成功'
+  OK_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+  # 关闭窗口
+  close_window: '//*[@id="vue_app"]/div[2]/button[4]'
+
+  # 通过
+  through_button: '//*[@id="next_button"]' # iframe2
+
+-
+  # 建设工程消防验收
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+
+  # 项目列表
+  construction_acceptance_list: '//*[@id="nav"]/li[2]/ul/li[2]'
+
+  # 主管部门审核-Y2
+  acceptance_review: '//*[@id="app"]/form/div/div[2]/div[2]/div/div[2]/div[1]'  # iframe
+
+-
+  # 建设工程消防验收备案
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+
+  # 项目列表
+  record_list: '//*[@id="nav"]/li[2]/ul/li[3]'
+
+  # 主管部门审核-B2
+  record_review: '//*[@id="app"]/form/div/div/div[2]/div[1]/div[2]/div[1]'  # iframe

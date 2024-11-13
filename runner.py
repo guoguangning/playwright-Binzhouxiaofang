@@ -34,7 +34,7 @@ def generate_allure_report(allure_results_dir: Path, html_report_dir: Path):
     :param allure_results_dir: 存储 pytest allure 结果的目录
     :param html_report_dir: 生成的 HTML 报告目录
     """
-    allure_cmd = Path('C:\\allure-2.30.0\\bin\\allure.bat')
+    allure_cmd = Path(r'..\Utils\allure-2.30.0\bin\allure.bat')
     command = [str(allure_cmd), 'generate', allure_results_dir, '-o', html_report_dir, '--clean']
     logger.info(f"Generating Allure report with command: {command}")
 

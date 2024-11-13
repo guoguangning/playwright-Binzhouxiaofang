@@ -12,7 +12,7 @@ logger = Logger("Utils_url").get_log()
 
 
 class Utils:
-    def __init__(self, config_file_path=r'C:\case\playwright_BinZhouXiaoFang\Config.ini'):
+    def __init__(self, config_file_path=r'..\Config.ini'):
         self.base_url = self.get_url_from_config(config_file_path)
 
     def get_full_url(self, path: str) -> str:

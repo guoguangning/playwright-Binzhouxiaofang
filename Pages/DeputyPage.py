@@ -14,7 +14,7 @@ logger = Logger("DeputyPage").get_log()
 
 class DeputyPage(BasePage):
     """帮办页面操作"""
-    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\DeputyPage.yaml')
+    data = load_and_validate_yaml(r'..\TestDatas\EleData\DeputyPage.yaml')
 
     def goto_deputy_page(self):
         try:

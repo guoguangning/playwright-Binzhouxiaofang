@@ -14,7 +14,7 @@ logger = Logger("TestDeputy").get_log()
 
 
 class TestUnitSealSJ(object):
-    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
+    yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data_sj = yaml_data[2]
 
     @pytest.fixture(autouse=True)
@@ -87,7 +87,7 @@ class TestUnitSealSJ(object):
 
 
 class TestUnitSealJL(object):
-    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
+    yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data_jl = yaml_data[3]
 
     @pytest.fixture(autouse=True)
@@ -160,7 +160,7 @@ class TestUnitSealJL(object):
 
 
 class TestUnitSealSG(object):
-    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
+    yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data_sg = yaml_data[4]
 
     @pytest.fixture(autouse=True)

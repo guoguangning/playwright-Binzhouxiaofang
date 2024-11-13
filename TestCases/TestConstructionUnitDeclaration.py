@@ -14,11 +14,11 @@ logger = Logger("TestDeputy").get_log()
 
 
 class TestConstructionUnitDeclaration(object):
-    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
+    yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[0]
 
     param_data = load_and_validate_yaml(
-        r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestConstructionUnitDeclaration.yaml')
+        r'..\TestDatas\ParamData\TestConstructionUnitDeclaration.yaml')
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):

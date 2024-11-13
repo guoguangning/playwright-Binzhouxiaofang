@@ -12,7 +12,7 @@ logger = Logger("LoginPage").get_log()
 
 
 class LoginPage(BasePage):
-    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\LoginPage.yaml')
+    data = load_and_validate_yaml(r'..\TestDatas\EleData\LoginPage.yaml')
 
     def goto_login(self):
         try:

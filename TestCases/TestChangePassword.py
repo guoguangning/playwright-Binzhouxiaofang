@@ -13,7 +13,7 @@ logger = Logger("TestChangePassword").get_log()
 
 
 class TestChangePassword(object):
-    param_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestChangePassword.yaml')
+    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestChangePassword.yaml')
 
     @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)

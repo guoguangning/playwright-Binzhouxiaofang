@@ -6,6 +6,7 @@
     <file url="file://$PROJECT_DIR$/Logs" charset="GBK" />
     <file url="file://$PROJECT_DIR$/Logs/202410141620.log" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Utils" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/Utils/allure-2.30.0" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/example_test.py" charset="GBK" />
     <file url="file://$PROJECT_DIR$/run_playwright_codegen.py" charset="GBK" />
     <file url="file://$PROJECT_DIR$/runner.py" charset="GBK" />

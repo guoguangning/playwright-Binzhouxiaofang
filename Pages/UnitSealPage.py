@@ -13,7 +13,7 @@ logger = Logger("UnitSealPage").get_log()
 
 class UnitSealPage(BasePage):
     """建设单位申报"""
-    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\UnitSealPage.yaml')
+    data = load_and_validate_yaml(r'..\TestDatas\EleData\UnitSealPage.yaml')
 
     def goto_unit_seal(self):
         try:

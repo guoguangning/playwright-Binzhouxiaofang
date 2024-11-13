@@ -14,7 +14,7 @@ logger = Logger("AddProjectsPage").get_log()
 
 class AddProjectsPage(BasePage):
     """新建建设工程页面操作"""
-    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\AddProjectsPage.yaml')
+    data = load_and_validate_yaml(r'..\TestDatas\EleData\AddProjectsPage.yaml')
 
     def goto_add_projects(self):
         try:

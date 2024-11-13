@@ -13,8 +13,8 @@ logger = Logger("ChangePasswordPage").get_log()
 
 
 class ChangePasswordPage(BasePage):
-    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\ChangePasswordPage.yaml')
-    image_path = r'C:\case\playwright_BinZhouXiaoFang\TestFiles\code_images.png'
+    data = load_and_validate_yaml(r'..\TestDatas\EleData\ChangePasswordPage.yaml')
+    image_path = r'..\TestFiles\code_images.png'
 
     def goto_change_password(self):
         try:

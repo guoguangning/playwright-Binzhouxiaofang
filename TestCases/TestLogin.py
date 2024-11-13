@@ -13,7 +13,7 @@ logger = Logger("TestLogin").get_log()
 
 
 class TestLogin:
-    param_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestLogin.yaml')
+    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestLogin.yaml')
 
     @pytest.mark.run(order=1)
     @pytest.mark.parametrize('login_data', param_data)
