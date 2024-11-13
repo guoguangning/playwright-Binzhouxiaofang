@@ -7,13 +7,13 @@
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
 from Utils.Util_verify import verify
-from Utils.Util_yaml import load_yaml
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("ChangePasswordPage").get_log()
 
 
 class ChangePasswordPage(BasePage):
-    data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\ChangePasswordPage.yaml')
+    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\ChangePasswordPage.yaml')
     image_path = r'C:\case\playwright_BinZhouXiaoFang\TestFiles\code_images.png'
 
     def goto_change_password(self):

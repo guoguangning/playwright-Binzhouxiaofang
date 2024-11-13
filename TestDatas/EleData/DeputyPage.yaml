@@ -20,7 +20,7 @@ deputy: '//div[@class="time-box"]/div[1]/div/div[1]'  # iframe
 # 帮办页面
 iframe2: ['//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
 
-upload_file_configuration: '//*[@id="vue_app"]/form/div[2]/button[4]' # 上传文件配置
+upload_file_configuration: '//*[@id="vue_app"]/div[2]/button[4]' # 上传文件配置
 no_upload_required: '//div[@class="file-upload-config"]/form/div[2]/div/div/label[1]'
 no_upload_required2: '//div[@class="file-upload-config"]/form/div[3]/div/div/label[1]'
 no_upload_required3: '//div[@class="file-upload-config"]/form/div[4]/div/div/label[1]'
@@ -28,13 +28,13 @@ no_upload_required4: '//div[@class="file-upload-config"]/form/div[5]/div/div/lab
 no_upload_required_button: '//div[@class="file-upload-config"]/div/button[2]'
 
 # 帮办建议
-deputy_suggestion: '//*[@id="vue_app"]/form/div[2]/button[5]'
+deputy_suggestion: '//*[@id="vue_app"]/div[2]/button[5]'
 deputy_suggestion_input: '//div[@class="swal2-content"]/textarea' # //textarea[@placeholder="若无建议，请填写'无'"]
 sure_button: '//div[@class="swal2-actions"]/button[text()="确认"]'
 ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
 
 # 帮办服务完成
-deputy_service_completed: '//*[@id="vue_app"]/form/div[2]/button[6]'
+deputy_service_completed: '//*[@id="hellpHandleComplete_button"]'
 expected: '//h2[@id="swal2-title"]'
 expected_text: '确认帮办服务完成?'
 confirm_button: '//div[@class="swal2-actions"]/button[text()="确认"]'

@@ -33,4 +33,4 @@ def generate_playwright_code(url, output_file, browser_name):
 
 # 使用示例
 if __name__ == "__main__":
-    generate_playwright_code("http://192.168.10.110:10700/login", "example_test.py", "chromium")
+    generate_playwright_code("http://192.168.10.110:10706/login", "example_test.py", "chromium")

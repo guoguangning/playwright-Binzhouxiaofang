@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# @File    : TestConstructionUnitDeclaration.yaml
+# @Date    : 2024/11/11 9:13
+# @Author  : ggn
+
+- ###建设工程消防设计审查审查:
+  num: '130'
+  expected: '//div[@class="time-box"]/div[2]/div/div[1]'
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'

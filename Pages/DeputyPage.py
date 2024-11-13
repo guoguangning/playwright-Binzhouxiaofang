@@ -7,21 +7,21 @@
 import time
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
-from Utils.Util_yaml import load_yaml
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("DeputyPage").get_log()
 
 
 class DeputyPage(BasePage):
     """帮办页面操作"""
-    data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\DeputyPage.yaml')
+    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\DeputyPage.yaml')
 
     def goto_deputy_page(self):
         try:
             self._goto_url(self.data['path'])
-            logger.info("Navigating to DeputyPage page")
+            logger.info("Navigating to DeputyPage")
         except Exception as e:
-            logger.error(f"Failed to open DeputyPage page: {e}")
+            logger.error(f"Failed to open DeputyPage: {e}")
             raise
 
     def click_xf(self) -> None:
@@ -51,7 +51,7 @@ class DeputyPage(BasePage):
             raise
 
     def click_deputy(self) -> None:
-        """点击帮办"""
+        """点击帮办S1"""
         try:
             self._hover(self.data['deputy'], self.data['iframe'])
             self._click(self.data['deputy'], self.data['iframe'])

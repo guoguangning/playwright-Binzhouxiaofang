@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+# @File    : UnitSealPage.yaml
+# @Date    : 2024/11/12 10:55
+# @Author  : ggn
+
+# 其他单位签章
+
+path: '/selectSystem?type=2'
+xf: '//*[@id="xf"]'  # 进入消防
+
+# 项目列表
+inspection_list: '//*[@id="nav"]/li[2]/ul/li[2]' # 建设工程消防验收
+record_list: '//*[@id="nav"]/li[2]/ul/li[3]' # 建设工程消防备案
+
+iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+# 进入项目页面
+enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
+
+# 消防验收申报-Y1
+construction_unit_declaration_inspection: '//*[@class="time-box"]/div[1]/div/div/div[1]' # iframe
+# 建设单位消防验收备案申报-B1
+construction_unit_declaration_record: '//*[@class="tree-center"]/div[1]/div[2]/div/div' # iframe
+
+iframe2: [ '//*[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe' ]
+# 基本情况填写
+sj: '//*[@id="xfChayanShishi"]' # 设计单位
+jl: '//*[@id="xfChayanJianli"]' # 监理单位
+sg: '//*[@id="zbChayanShigong"]' # 施工总承包单位
+
+view_template: '//*[@id="print_div"]/div[5]/div/div[3]/div/span/span/button' # 查看模版
+fill_in: '//*[@id="optionText"]/ancestor::div/div[2]/button[2]' # 填入
+OK_button: '//*[@id="print_div"]/div[5]/div/div[3]/div/button[2]' # 确定按钮
+
+# 签章
+signature_button: '//*[@id="vue_app"]/form/div[2]/div[1]/button[1]' # 签章按钮
+signature_application_form_switch: '//*[@class="el-form"]/div[1]/div[1]/div/div/div' # 申请表开关
+signature_acceptance_report_switch: '//*[@class="el-form"]/div[2]/div[1]/div/div/div' # 验收报告开关\告知承诺书
+signature_confirm_button: '//*[@id="vue_app"]/div[3]/div/div[3]/div/button[1]'  # 确认按钮
+send_sms_button_acceptance: '//form[@class="el-form"]/div[3]/div[2]/div/button' # 发送短信
+sms_verification_code_acceptance: '//form[@class="el-form"]/div[3]/div[2]/div/div/input' # 输入短信
+signature_confirmation_button_acceptance: '//div[@class="el-dialog__body"]/div/button[1]' # 确定按钮
+signature_confirmation_expected: '//*[@id="swal2-title"]'
+signature_confirmation_expected_text: '签章完成'
+signature_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+
+

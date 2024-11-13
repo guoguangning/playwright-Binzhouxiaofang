@@ -7,21 +7,21 @@
 import time
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
-from Utils.Util_yaml import load_yaml
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("AddProjectsPage").get_log()
 
 
 class AddProjectsPage(BasePage):
     """新建建设工程页面操作"""
-    data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\AddProjectsPage.yaml')
+    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\AddProjectsPage.yaml')
 
     def goto_add_projects(self):
         try:
             self._goto_url(self.data['path'])
-            logger.info("Navigating to AddDesignReviewPage page")
+            logger.info("Navigating to AddDesignReviewPage")
         except Exception as e:
-            logger.error(f"Failed to open AddDesignReviewPage page: {e}")
+            logger.error(f"Failed to open AddDesignReviewPage: {e}")
             raise
 
     def click_xf(self) -> None:
@@ -95,6 +95,16 @@ class AddProjectsPage(BasePage):
             logger.error(f"Failed to Selector category：{e}")
             raise
 
+    def select_category2(self) -> None:
+        """选择类别"""
+        try:
+            self._select_options(self.data['category'],
+                                 *self.data['select_category2'], frame_locator=self.data['iframe'])
+            logger.info("Selector category")
+        except Exception as e:
+            logger.error(f"Failed to Selector category：{e}")
+            raise
+
     def select_using_properties(self) -> None:
         """建筑工程使用属性"""
         try:
@@ -103,6 +113,42 @@ class AddProjectsPage(BasePage):
             logger.info("Selector using_properties")
         except Exception as e:
             logger.error(f"Failed to Selector using_properties：{e}")
+            raise
+
+    def click_is_general_project(self) -> None:
+        """选择是否为一般项目：是"""
+        try:
+            self._click(self.data['is_general_project'], self.data['iframe'])
+            logger.info("Clicking is_general_project")
+        except Exception as e:
+            logger.error(f"Failed to click is_general_project: {e}")
+            raise
+
+    def click_no_general_project(self) -> None:
+        """选择是否为一般项目：否"""
+        try:
+            self._click(self.data['no_general_project'], self.data['iframe'])
+            logger.info("Clicking no_general_project")
+        except Exception as e:
+            logger.error(f"Failed to click no_general_project: {e}")
+            raise
+
+    def click_general_project_types(self) -> None:
+        """选择一般项目类型"""
+        try:
+            self._click(self.data['general_project_types'], self.data['iframe'])
+            logger.info("Clicking general_project_types")
+        except Exception as e:
+            logger.error(f"Failed to click general_project_types: {e}")
+            raise
+
+    def click_application_method(self) -> None:
+        """选择申报方式"""
+        try:
+            self._click(self.data['application_method'], self.data['iframe'])
+            logger.info("Clicking application_method")
+        except Exception as e:
+            logger.error(f"Failed to click application_method: {e}")
             raise
 
     def click_related_matters(self) -> None:

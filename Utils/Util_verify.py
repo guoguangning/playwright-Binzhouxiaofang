@@ -58,5 +58,5 @@ def verify(image_path: str) -> Optional[str]:
 
 
 if __name__ == '__main__':
-    path = r''
+    path = r'C:\case\playwright_BinZhouXiaoFang\TestFiles\code_images.png'
     verify(path)

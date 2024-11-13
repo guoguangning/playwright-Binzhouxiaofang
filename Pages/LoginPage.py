@@ -6,13 +6,13 @@
 """
 from BasePage.BasePage import BasePage
 from BasePage.logger import Logger
-from Utils.Util_yaml import load_yaml
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("LoginPage").get_log()
 
 
 class LoginPage(BasePage):
-    data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\LoginPage.yaml')
+    data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\EleData\LoginPage.yaml')
 
     def goto_login(self):
         try:

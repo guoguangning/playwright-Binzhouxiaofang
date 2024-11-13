@@ -5,30 +5,25 @@
 @Author  : ggn
 """
 import pytest
-
 from BasePage.logger import Logger
 from Pages.DeputyPage import DeputyPage
-from TestCases.TestLogin import TestLogin
-from Utils.Util_yaml import load_yaml
+from TestCases.Base import Base
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("TestDeputy").get_log()
 
 
 class TestDeputy(object):
-    yaml_data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
-    if yaml_data is None:
-        raise ValueError("无法加载 Login.yaml 文件或文件内容为空。")
+    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[1]
 
-    param_data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestDeputy.yaml')
-    if param_data is None:
-        raise ValueError("无法加载 TestDeputy.yaml 文件或文件内容为空。")
+    param_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestDeputy.yaml')
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):
         """在每个测试用例前执行"""
-        self.login = TestLogin()
-        self.login.test_login(page, self.login_data)
+        self.login = Base(page)
+        self.login.login(self.login_data)
         self.test_Deputy = DeputyPage(page)
 
     # @pytest.mark.run(order=3)

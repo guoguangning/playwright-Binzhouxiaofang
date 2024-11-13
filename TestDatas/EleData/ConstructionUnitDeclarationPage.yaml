@@ -1,0 +1,304 @@
+# -*- coding: utf-8 -*-
+# @File    : ConstructionUnitDeclarationPage.yaml
+# @Date    : 2024/10/17 14:09
+# @Author  : ggn
+-
+  ###建设工程消防设计审查
+  # 进入消防
+  path: '/selectSystem?type=2'
+  xf: '//*[@id="xf"]'
+
+  # 项目列表
+  construction_design_review_list: '//*[@id="nav"]/li[3]/ul/li[1]' # 建设工程消防设计审查
+
+  # 审查项目列表 进入项目页面
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe' # 建设工程消防设计审查
+  enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
+
+  # 建设单位消防设计审查申报
+  construction_unit_declaration: '//div[@class="time-box"]/div[2]/div/div[1]' # 建设工程消防设计审查  iframe
+
+  # 申报填写  建设工程消防设计审查
+  iframe2: ['//div[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
+
+  contact: '//*[@id="tableS"]/tbody/tr[1]/td[4]/input' # 联系人
+  contact_number: '//*[@id="tableS"]/tbody/tr[2]/td[2]/input' # 联系电话
+  category: '//input[@id="shineiwaizhuangxiu_checkbox"]' # 类别(扩建-室外装修)
+  planning_permission_documents: '//*[@id="tableS"]/tbody/tr[5]/td[2]/input' # 建设工程规划许可文件（依法需办理的）
+  temporary_building_approval_document: '//*[@id="tableS"]/tbody/tr[6]/td[2]/input' # 临时性建筑批准文件（依法需办理的）
+  special_fire_protection_design: '//*[@id="teshuXiaofang_fou"]' # 特殊消防设计  是：//*[@id="teshuXiaofang_shi"]
+  buildings_larger_than_250m: '//*[@id="gaoduDayu250_fou"]' # 建筑高度大于 250m 的建筑采取加强性消防设计措施 是：//*[@id="gaoduDayu250_shi"]
+  project_investment: '//*[@id="gongchengTouzie"]' # 工程投资额（万元）
+  total_construction_area: '//*[@id="jianzhuMianji"]' # 总建筑面积
+  special_construction_project_situations: '//*[@id="special0"]' # 特殊建设项目情况
+  technical_service_agency: '//*[@id="tableS"]/tbody/tr[13]/td[1]/label' # 技术服务机构
+  # 单体工程信息 #
+  structure_type: '//*[@id="jianZhu0jieGou"]' # 结构类型
+  use_nature: '//*[@id="jianZhu0xingZhi"]' # 使用性质
+  fire_resistance_grade_ground: '//*[@id="jianZhu0naiHuoT"]' # 耐火等级地上
+  fire_resistance_grade_ground_type: '二级'
+  fire_resistance_level_underground: '//*[@id="jianZhu0naiHuoB"]' # 耐火等级地下
+  fire_resistance_level_underground_type: '二级'
+  floors_on_the_ground: '//*[@id="jianZhu0cengShuShang"]' # 层数地上
+  floors_underground: '//*[@id="jianZhu0cengShuXia"]' # 层数地下
+  high: '//*[@id="jianZhu0gaoDu"]' # 高度
+  length: '//*[@id="jianZhu0changDu"]' # 长度
+  floor_space: '//*[@id="jianZhu0mianJi"]' # 占地面积
+  building_area_above_ground: '//*[@id="jianZhu0jianZhuShang"]' # 建筑面积地上
+  building_area_underground: '//*[@id="jianZhu0jianZhuXia"]' # 建筑面积地下
+  # 其他 #
+  decoration: '//*[@id="zhuangshizhuangxiu"]' # 装饰装修
+  decoration_parts: '//*[@id="zhuangxiubuwei0"]' # 装修部位
+  decoration_area: '//*[@id="print_div"]/table[3]/tbody[1]/tr[2]/td[2]/input' # 装修面积
+  decoration_floor: '//*[@id="print_div"]/table[3]/tbody[1]/tr[2]/td[4]/input' # 装修所在层数
+  firefighting_facilities_and_others: '//*[@id="xiaofangsheshijiqita0"]' # 消防设施及其他
+  brief_description_of_the_project: '//*[@id="qiTaShuoMing"]' # 工程简要说明
+  # 填写完毕 #
+  complete_button: '//*[@id="vue_app"]/div[2]/button[4]'
+  complete_expected: '//*[@id="swal2-title"]'
+  complete_expected_text: '填写完毕'
+  complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 上传文件 #  用 iframe3
+  iframe3: ['//div[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe', '//*[@class="layui-layer-content"]/iframe']
+  upload_file_button: '//*[@id="vue_app"]/div[2]/button[2]' # 上传文件按钮 iframe2
+  click_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[5]/td[3]/span/div[2]/label'
+  select_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[5]/td[3]/span/div[2]/input' # 选择文件 # 建设工程规划许可文件(依法需要办理的) 上传文件
+  upload_file_no: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[7]/td[2]/span'
+  upload_file_no2: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[9]/td[2]/span'
+  upload_file_no3: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[11]/td[2]/span'
+  upload_file_no4: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[13]/td[2]/span'
+  upload_file_no5: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[15]/td[2]/span'
+  upload_file_no6: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[17]/td[2]/span'
+  upload_complete_button: '//*[@id="shejishenbao_file_form_su"]'
+  upload_complete_expected: '//*[@id="swal2-title"]'
+  upload_complete_expected_text: '资料上传完成，请关闭此页面继续提交操作。'
+  upload_complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 签章 # 用iframe2
+  signature_button: '//*[@id="vue_app"]/div[2]/button[3]' # 签章按钮
+  send_sms_button: '//form[@class="el-form"]/div[3]/div[2]/div/button' # 发送短信
+  sms_verification_code: '//form[@class="el-form"]/div[3]/div[2]/div/div/input' # 输入短信
+  signature_confirmation_button: '//div[@class="el-dialog__body"]/div/button[1]'
+  signature_confirmation_expected: '//*[@id="swal2-title"]'
+  signature_confirmation_expected_text: '签章完成'
+  signature_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+  # 提交 #  用iframe2
+  submit_button: '//*[@id="next"]'
+  submit_button_expected: '//*[@id="swal2-title"]'
+  submit_button_expected_text: '确认提交?'
+  submit_confirmation_button: '//div[@class="swal2-actions"]/button[text()="确认"]'
+
+-
+  ###建设工程消防验收:
+  # 项目列表 建设工程消防验收
+  inspection_list: '//*[@id="nav"]/li[3]/ul/li[2]'
+
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  # 建设单位申报 建设工程消防验收
+  construction_unit_declaration_inspection: '//*[@class="time-box"]/div[1]/div/div/div[1]'
+
+  # 申报填写  建设工程消防验收
+  iframe2: ['//div[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe']
+
+  contact: '//*[@id="jianSheDanWei_jingBan"]' # 联系人
+  contact_number: '//*[@id="jianSheDanWei_jingBanPhone"]' # 联系电话
+  project_investment: '//*[@id="gongchengTouzie"]' # 工程投资额（万元）
+  total_construction_area: '//*[@id="jianzhuMianji"]' # 总建筑面积
+  fire_construction_unit: '//*[@id="tableS"]/tr[8]/td[1]/label' # 消防施工单位
+  technical_service_agency: '//*[@id="tableS"]/tr[10]/td[1]/label' # 技术服务机构
+  fire_protection_design_review_opinion: '//*[@id="xfYijianshuNo"]' # 特殊建设工程消防设计审查意见书
+  click_review_pass_date: '//*[@id="xfYijianshuDate"]' # 审查合格日期
+  review_pass_date: '//body/div[2]/div[1]/div/div[2]/table[1]/tbody'
+  construction_permit_number: '//*[@id="shigongXukeNo"]' # 建筑工程施工许可证号、批准开工报告编号或证明文件编号
+  click_certification_date: '//*[@id="shigongXukeDate"]' # 制证日期
+  certification_date: '//body/div[3]/div[1]/div/div[2]/table[1]/tbody'
+
+  # 基本情况
+  basic_situation: '//*[@id="xfChayanJiben"]'
+  view_template: '//*[@id="print_div"]/div[5]/div/div[3]/div/span/span/button' # 查看模版
+  fill_in: '//*[@id="optionText"]/ancestor::div/div[2]/button[2]' # 填入
+  OK_button: '//*[@id="print_div"]/div[5]/div/div[3]/div/button[2]' # 确定按钮
+  remark: '//*[@id="xfChayanBeizhu"]' # 备注
+
+  # 填写完毕
+  complete_button: '//*[@id="vue_app"]/form/div[2]/div[1]/button[5]'
+  complete_expected: '//*[@id="swal2-title"]'
+  complete_expected_text: '申请表填写完毕, 您可以继续填写竣工验收报告。'
+  complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 上传文件
+  iframe3: ['//div[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe', '//*[@class="layui-layer-content"]/iframe']
+  upload_file_button: '//*[@id="vue_app"]/form/div[2]/div[1]/button[2]' # 上传文件按钮 iframe2
+  click_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[7]/td[2]/span[1]/div[2]/label'
+  select_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[7]/td[2]/span[1]/div[2]/input' # 消防查验情况报告
+  click_file2: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[9]/td[2]/span[1]/div[2]/label'
+  select_file2: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[9]/td[2]/span[1]/div[2]/input' # 消防查验现场查验原始记录表
+  click_file3: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[11]/td[2]/span[1]/div[2]/label'
+  select_file3: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[11]/td[2]/span[1]/div[2]/input' # 涉及消防的建设工程竣工图纸
+  upload_complete_button: '//*[@id="shejishenbao_file_form_su"]' # 上传成功按钮
+  upload_complete_expected: '//*[@id="swal2-title"]'
+  upload_complete_expected_text: '资料上传完成，请关闭此页面继续提交操作。'
+  upload_complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+
+  # 验收报告填写
+  acceptance_report: '//*[@id="tab-second"]' # 验收报告 iframe2
+
+  acceptance_iframe: ['//*[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe', '//*[@id="iframe"]']
+
+  construction_permit_number_: '//*[@id="sgxkNumber"]' # 施工许可证号/批准开工报告文号
+  design_review_qualified_opinion: '//*[@id="xfCertNum"]' # 建设工程消防设计审查合格意见书
+  inspection_certificate_number: '//*[@id="sgtCertNum"]' # 施工图设计文件审查合格证号
+  basic_construction_procedures: '//*[@id="jsAssess"]' # 建设单位执行基本建设程序情况
+  view_template_acceptance: '//*[@id="app"]/div[5]/div/div[3]/div/span/span/button' # 查看模版
+  fill_in_acceptance: '//*[@id="optionText"]/ancestor::div/div[2]/button[2]' # 填入
+  OK_button_acceptance: '//*[@id="app"]/div[5]/div/div[3]/div/button[2]' # 确定按钮
+  survey_unit_evaluation: '//*[@id="kcAssess"]' # 对勘察单位评价
+  design_unit_evaluation: '//*[@id="sjAssess"]' # 对设计单位评价
+  construction_unit_evaluation: '//*[@id="sgAssess"]' # 对施工单位评价
+  supervision_unit_evaluation: '//*[@id="jlAssess"]' # 对监理单位评价
+  acceptance_procedure_organization: '//*[@id="ysChengxuZuzhiXingshi"]' # 验收程序及组织形式
+  acceptance_content: '//*[@id="ysNeirong"]' # 验收内容
+  completion_acceptance_opinion: '//*[@id="jungongYanshouYijian"]' # 竣工验收意见
+  # 查看情况
+  HTWCQKState0: '//*[@id="hetongWanchengQingkuangstate0"]'
+  HTWCQKState1: '//*[@id="hetongWanchengQingkuangstate1"]'
+  HTWCQKState2: '//*[@id="hetongWanchengQingkuangstate2"]'
+  HTWCQKState3: '//*[@id="hetongWanchengQingkuangstate3"]'
+  DAZLWZXState0: '//*[@id="danganZiliaoWanzhengxingstate0"]'
+  DAZLWZXState1: '//*[@id="danganZiliaoWanzhengxingstate1"]'
+  DAZLWZXState2: '//*[@id="danganZiliaoWanzhengxingstate2"]'
+  DAZLWZXState3: '//*[@id="danganZiliaoWanzhengxingstate3"]'
+  FBFXHGestate0: '//*[@id="fenbuFenxiangHegestate0"]'
+  FBFXHGestate1: '//*[@id="fenbuFenxiangHegestate1"]'
+  FBFXHGestate2: '//*[@id="fenbuFenxiangHegestate2"]'
+  FBFXHGestate3: '//*[@id="fenbuFenxiangHegestate3"]'
+  SSXNState0: '//*[@id="sheshiXingnengstate0"]'
+  SSXNState1: '//*[@id="sheshiXingnengstate1"]'
+  SSXNState2: '//*[@id="sheshiXingnengstate2"]'
+  completion: '//*[@id="completion"]'
+
+  # 验收报告填写完毕
+  complete_button_acceptance: '//*[@id="app"]/div[4]/button[2]' # 填写完毕
+  complete_expected_acceptance: '//*[@id="swal2-title"]'
+  complete_expected_acceptance_text: '填写完毕'
+  complete_ok_button_acceptance: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 发送签章通知
+  send_signature_notification_button: '//*[@id="app"]/div[4]/button[2]' # 发送签章通知按钮
+  application_form_switch: '//*[@class="el-form"]/div[1]/div[1]/div/div/div' # 申请表开关
+  acceptance_report_switch: '//*[@class="el-form"]/div[2]/div[1]/div/div/div' # 验收报告开关
+  confirm_button: '//*[@id="app"]/div[6]/div/div[3]/div/button[1]'  # 确认按钮
+  expected_signature: '//*[@id="swal2-title"]'
+  expected_signature_text: '已通知其他单位进行签章'
+  complete_ok_button_signature: '//div[@class="swal2-actions"]/button[text()="OK"]' # ok按钮
+
+    # 签章 # 用iframe2
+  tab_first: '//*[@id="tab-first"]'
+  signature_button: '//*[@id="vue_app"]/form/div[2]/div[1]/button[3]' # 签章按钮
+  signature_application_form_switch: '//*[@class="el-form"]/div[1]/div[1]/div/div/div' # 申请表开关
+  signature_acceptance_report_switch: '//*[@class="el-form"]/div[2]/div[1]/div/div/div' # 验收报告开关
+  signature_confirm_button: '//*[@id="vue_app"]/div[3]/div/div[3]/div/button[1]'  # 确认按钮
+  send_sms_button_acceptance: '//form[@class="el-form"]/div[3]/div[2]/div/button' # 发送短信
+  sms_verification_code_acceptance: '//form[@class="el-form"]/div[3]/div[2]/div/div/input' # 输入短信
+  signature_confirmation_button_acceptance: '//div[@class="el-dialog__body"]/div/button[1]' # 确定按钮
+  signature_confirmation_expected: '//*[@id="swal2-title"]'
+  signature_confirmation_expected_text: '签章完成'
+  signature_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 提交 #  用iframe2
+  submit_button: '//*[@id="next"]'
+  submit_button_expected: '//*[@id="swal2-title"]'
+  submit_button_expected_text: '确认提交?'
+  submit_confirmation_button: '//div[@class="swal2-actions"]/button[text()="确认"]'
+
+-
+  ###建设工程消防备案:
+  iframe: '//*[@class="layui-tab-item layui-show"]/iframe'
+  # 项目列表
+  record_list: '//*[@id="nav"]/li[3]/ul/li[3]' # 建设工程消防备案
+
+  # 建设单位消防验收备案申报-B1
+  construction_unit_declaration_record: '//*[@class="tree-center"]/div[1]/div[2]/div/div' # iframe
+
+  # 申报填写  建设工程消防验收
+  iframe2: [ '//*[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe' ]
+
+  contact2: '//*[@id="jianSheDanWei_jingBan"]' # 联系人
+  contact_number2: '//*[@id="jianSheDanWei_jingBanPhone"]' # 联系电话
+  project_investment2: '//*[@id="gongchengTouzie"]' # 工程投资额（万元）
+  total_construction_area: '//*[@id="jianzhuMianji"]' # 总建筑面积
+  fire_construction_unit: '//*[@id="tableS"]/tr[8]/td[1]/label' # 消防施工单位
+  technical_service_agency: '//*[@id="tableS"]/tr[10]/td[1]/label' # 技术服务机构
+  construction_permit_number: '//*[@id="shigongXukeNo"]' # 建筑工程施工许可证号、批准开工报告编号或证明文件编号
+  click_certification_date2: '//*[@id="shigongXukeDate"]' # 制证日期
+  certification_date2: '//body/div[2]/div[1]/div/div[2]/table[1]/tbody'
+
+  # 单体
+  structure_type: '//*[@id="jianZhu0jieGou"]' # 结构类型
+  use_nature: '//*[@id="jianZhu0xingZhi"]' # 使用性质
+  fire_resistance_grade_ground: '//*[@id="jianZhu0naiHuoT"]' # 耐火等级地上
+  fire_resistance_grade_ground_type: '二级'
+  fire_resistance_level_underground: '//*[@id="jianZhu0naiHuoB"]' # 耐火等级地下
+  fire_resistance_level_underground_type: '二级'
+  floors_on_the_ground: '//*[@id="jianZhu0cengShuShang"]' # 层数地上
+  floors_underground: '//*[@id="jianZhu0cengShuXia"]' # 层数地下
+  high: '//*[@id="jianZhu0gaoDu"]' # 建筑高度
+  length: '//*[@id="jianZhu0changDu"]' # 建筑长度
+  floor_space: '//*[@id="jianZhu0mianJi"]' # 占地面积
+  building_area_above_ground: '//*[@id="jianZhu0jianZhuShang"]' # 建筑面积地上
+  building_area_underground: '//*[@id="jianZhu0jianZhuXia"]' # 建筑面积地下
+  # 基本情况
+  basic_situation: '//*[@id="xfChayanJiben"]'
+  view_template: '//*[@id="print_div"]/div[4]/div/div[3]/div/span/span/button' # 查看模版
+  fill_in: '//*[@id="el-popover-3269"]/div[2]/button[2]' # 填入
+  OK_button: '//*[@id="print_div"]/div[4]/div/div[3]/div/button[2]' # 确定按钮
+  # 备注
+  remark: '//*[@id="xfChayanBeizhu"]'
+
+  # 填写完毕
+  complete_button: '//*[@id="vue_app"]/form/div[2]/button[5]'
+  complete_expected: '//*[@id="swal2-title"]'
+  complete_expected_text: '申请表填写完毕，您可以对申请表和承诺书进行签章。'
+  complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 上传文件-告知承诺制
+  iframe3: [ '//div[@class="layui-tab-item layui-show"]/iframe', '//*[@class="layui-layer-content"]/iframe', '//*[@class="layui-layer-content"]/iframe' ]
+  upload_file_button2: '//*[@id="vue_app"]/form/div[2]/div[1]/button[2]' # 上传文件按钮 iframe2
+  click_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[7]/td[2]/span[1]/div[2]/label'
+  select_file: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[7]/td[2]/span[1]/div[2]/input' # 消防查验情况报告
+  click_file2: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[9]/td[2]/span[1]/div[2]/label'
+  select_file2: '//*[@id="shejishenbao_file_form"]/div[1]/table/tbody/tr[9]/td[2]/span[1]/div[2]/input' # 消防查验现场查验原始记录表
+  upload_complete_button: '//*[@id="shejishenbao_file_form_su"]' # 上传成功按钮
+  upload_complete_expected: '//*[@id="swal2-title"]'
+  upload_complete_expected_text: '资料上传完成，请关闭此页面继续提交操作。'
+  upload_complete_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 发送签章通知 acceptance_iframe
+  send_signature_notification_button: '//*[@id="app"]/div[4]/button[2]' # 发送签章通知按钮-验收报告
+  send_signature_notification_button_method: '//*[@id="app"]/div[4]/button[1]' # 发送签章通知按钮-告知承诺书
+  application_form_switch_method: '//*[@class="el-form"]/div[1]/div[1]/div/div/div' # 申请表开关
+  acceptance_report_switch_method: '//*[@class="el-form"]/div[2]/div[1]/div/div/div' # 验收报告开关
+  confirm_button_method: '//*[@id="app"]/div[6]/div/div[3]/div/button[1]'  # 确认按钮
+  expected_signature: '//*[@id="swal2-title"]'
+  expected_signature_text: '已通知其他单位进行签章'
+  complete_ok_button_signature: '//div[@class="swal2-actions"]/button[text()="OK"]' # ok按钮
+
+  # 签章 # 用iframe2
+  signature_button: '//*[@id="vue_app"]/form/div[2]/button[3]' # 签章按钮
+  signature_application_form_switch: '//*[@class="el-form"]/div[1]/div[1]/div/div/div' # 申请表开关
+  signature_acceptance_report_switch: '//*[@class="el-form"]/div[2]/div[1]/div/div/div' # 验收报告开关
+  signature_confirm_button: '//*[@id="vue_app"]/div[1]/div/div[3]/div/button[1]'  # 确认按钮
+  send_sms_button: '//form[@class="el-form"]/div[3]/div[2]/div/button' # 发送短信
+  sms_verification_code: '//form[@class="el-form"]/div[3]/div[2]/div/div/input' # 输入短信
+  signature_confirmation_button: '//div[@class="el-dialog__body"]/div/button[1]'
+  signature_confirmation_expected: '//*[@id="swal2-title"]'
+  signature_confirmation_expected_text: '签章完成'
+  signature_ok_button: '//div[@class="swal2-actions"]/button[text()="OK"]'
+
+  # 提交 #  用iframe2
+  submit_button: '//*[@id="next"]'
+  submit_button_expected: '//*[@id="swal2-title"]'
+  submit_button_expected_text: '确认提交?'
+  submit_confirmation_button: '//div[@class="swal2-actions"]/button[text()="确认"]'

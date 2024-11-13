@@ -37,6 +37,24 @@ def load_yaml(file_path):
         return None
 
 
+def load_and_validate_yaml(file_path: str) -> dict:
+    """加载并验证YAML文件内容
+
+    参数:
+        file_path (str): YAML文件的路径
+
+    返回:
+        dict: 加载的YAML内容，若文件不存在或内容为空则抛出 ValueError
+
+    异常:
+        ValueError: 如果文件内容为空或无法加载
+    """
+    data = load_yaml(file_path)
+    if data is None:
+        raise ValueError(f"无法加载 {file_path} 文件或文件内容为空。")
+    return data
+
+
 def save_yaml(data, file_path):
     """将数据保存到YAML文件
 

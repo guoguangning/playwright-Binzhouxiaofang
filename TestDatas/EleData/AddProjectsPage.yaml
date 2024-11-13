@@ -10,7 +10,7 @@ new_construction_design_review: '//*[@id="nav"]/li[2]/ul/li[1]/a'  # 新建建�
 new_inspection: '//*[@id="nav"]/li[2]/ul/li[2]/a'  # 新建建设工程消防验收
 new_record: '//*[@id="nav"]/li[2]/ul/li[3]/a'  # 新建建设工程消防备案
 
-iframe: '//*[@id="layui-layer-iframe1"]'
+iframe: '//*[@class="layui-layer-content"]/iframe'
 
 select_project_name: '//div[@class="content"]/div[1]/div[1]/div/div/span[1]'  #选择项目
 select_project: '//div[text()="*-BZ-20241016-051"]'
@@ -21,11 +21,18 @@ select_engineering: '//div[text()="*-BZ-20241016-051-001"]'
 confirm_engineering_button: '//div[@class="dialog-footer"]/button[1]'
 
 category: '新建扩建改建'  # 类别 新建扩建改建
-select_category: '新'
-#select_category: '改'
+select_category: '改'
+select_category2: '新'
 
 using_properties: '//*[@id="vue_div"]/form/div/div/div[4]/div/div/div/div/div/input' # 建筑工程使用属性
-select_using_properties: '//span[text()="房屋建筑工程"]'  #
+select_using_properties: '//span[text()="房屋建筑工程"]'
+
+is_general_project: '//*[@id="vue_div"]/form/div/div/div[4]/div[2]/div/div[2]/div/label[1]/span[1]'  # 是一般项目
+no_general_project: '//*[@id="vue_div"]/form/div/div/div[4]/div[2]/div/div[2]/div/label[2]' # 不是一般项目
+
+general_project_types: '//*[@id="vue_div"]/form/div/div/div[5]/div/div[2]/div/label[5]' # 一般项目类型（丁戊类厂房、丁戊类仓库。）
+
+application_method: '//*[@id="vue_div"]/form/div/div/div[6]/div/div[2]/div/label[2]' # 申报方式（告知承诺申报）
 
 related_matters: '//div[@class="el-table__body-wrapper is-scrolling-none"]/table/tbody/tr[1]/td[1]' # 关联政务网事项
 

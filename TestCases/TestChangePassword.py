@@ -5,22 +5,19 @@
 @Author  : ggn
 """
 import pytest
-
 from BasePage.logger import Logger
 from Pages.ChangePasswordPage import ChangePasswordPage
-from Utils.Util_yaml import load_yaml
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("TestChangePassword").get_log()
 
 
 class TestChangePassword(object):
-    param_data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestChangePassword.yaml')
-    if param_data is None:
-        raise ValueError("无法加载 TestSiteAcceptance.yaml 文件或文件内容为空。")
+    param_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestChangePassword.yaml')
 
     @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
-    def test_login(self, page, project_data):
+    def test_change_password(self, page, project_data):
         """测试忘记密码修改密码功能"""
         try:
             self.ChangePassword = ChangePasswordPage(page)  # 创建 LoginPage 实例

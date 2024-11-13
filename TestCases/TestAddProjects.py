@@ -8,27 +8,23 @@ import time
 import pytest
 from BasePage.logger import Logger
 from Pages.AddProjectsPage import AddProjectsPage
-from TestCases.TestLogin import TestLogin
-from Utils.Util_yaml import load_yaml
+from TestCases.Base import Base
+from Utils.Util_yaml import load_and_validate_yaml
 
 logger = Logger("TestAddProjects").get_log()
 
 
 class TestAddProjects(object):
-    yaml_data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
-    if yaml_data is None:
-        raise ValueError("无法加载 Login.yaml 文件或文件内容为空。")
+    yaml_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[0]
 
-    param_data = load_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestAddProjects.yaml')
-    if param_data is None:
-        raise ValueError("无法加载 TestAddProjects.yaml 文件或文件内容为空。")
+    param_data = load_and_validate_yaml(r'C:\case\playwright_BinZhouXiaoFang\TestDatas\ParamData\TestAddProjects.yaml')
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):
         """在每个测试用例前执行"""
-        self.login = TestLogin()
-        self.login.test_login(page, self.login_data)
+        self.login = Base(page)
+        self.login.login(self.login_data)
         self.test_AddProjects = AddProjectsPage(page)
 
     # @pytest.mark.run(order=3)
@@ -73,7 +69,7 @@ class TestAddProjects(object):
             logger.error(f"断言不可见: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
+    # # @pytest.mark.run(order=3)
     @pytest.mark.parametrize('project_data', param_data)
     def test_add_inspection(self, project_data):
         """
@@ -98,7 +94,7 @@ class TestAddProjects(object):
         time.sleep(1)
         self.test_AddProjects.select_project_name()
         self.test_AddProjects.select_engineering_name()
-        self.test_AddProjects.select_category()
+        self.test_AddProjects.select_category2()
         self.test_AddProjects.select_using_properties()
 
     def _save_inspection(self):
@@ -118,7 +114,7 @@ class TestAddProjects(object):
     @pytest.mark.parametrize('project_data', param_data)
     def test_add_record(self, project_data):
         """
-        测试新建建设工程消防备案
+        测试新建建设工程消防备案-非一般项目
         """
         try:
             self._navigate_to_add_record()
@@ -139,14 +135,59 @@ class TestAddProjects(object):
         time.sleep(1)
         self.test_AddProjects.select_project_name()
         self.test_AddProjects.select_engineering_name()
-        self.test_AddProjects.select_category()
+        self.test_AddProjects.select_category2()
         self.test_AddProjects.select_using_properties()
+        self.test_AddProjects.click_no_general_project()
 
     def _save_record(self):
         self.test_AddProjects.click_added_button()
         self.test_AddProjects.click_ok_record_button()
 
     def _assert_record(self, project_data):
+        try:
+            self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text_record'],
+                                                    project_data['iframe'])
+            return True
+        except Exception as e:
+            logger.error(f"断言不可见: {e}")
+            return False
+
+    # @pytest.mark.run(order=3)
+    @pytest.mark.parametrize('project_data', param_data)
+    def test_add_record_method(self, project_data):
+        """
+        测试新建建设工程消防备案-一般项目
+        """
+        try:
+            self._navigate_to_add_record_method()
+            self._add_record_method()
+            self._save_record_method()
+            if self._assert_record_method(project_data):
+                logger.info('新建建设工程消防备案成功')
+        except Exception as e:
+            logger.error(f"新建建设工程消防备案失败: {e}")
+            raise
+
+    def _navigate_to_add_record_method(self):
+        self.test_AddProjects.goto_add_projects()
+        self.test_AddProjects.click_xf()
+
+    def _add_record_method(self):
+        self.test_AddProjects.click_new_record()
+        time.sleep(1)
+        self.test_AddProjects.select_project_name()
+        self.test_AddProjects.select_engineering_name()
+        self.test_AddProjects.select_category2()
+        self.test_AddProjects.select_using_properties()
+        self.test_AddProjects.click_is_general_project()
+        self.test_AddProjects.click_general_project_types()
+        self.test_AddProjects.click_application_method()
+
+    def _save_record_method(self):
+        self.test_AddProjects.click_added_button()
+        self.test_AddProjects.click_ok_record_button()
+
+    def _assert_record_method(self, project_data):
         try:
             self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text_record'],
                                                     project_data['iframe'])

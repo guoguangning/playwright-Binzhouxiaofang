@@ -7,7 +7,7 @@
 import re
 from datetime import datetime
 from typing import Optional, Union, List
-from playwright.sync_api import expect, Page, Locator
+from playwright.sync_api import expect, Page
 from BasePage.logger import Logger
 from Utils.Util_url import Utils
 
@@ -30,6 +30,44 @@ class BasePage:
             logger.error(f"Cannot navigate to page: {e}")
             raise
 
+    # def _click(self, locators: Union[str, List[str]], frame_locator: Optional[str] = None) -> None:
+    #     """
+    #     点击元素
+    #     :param locators: 传入单个元素定位器或多个元素定位器的列表
+    #     :param frame_locator: 传入frame框架的定位器，如果没有传入，则一般点击
+    #     :return: None
+    #     """
+    #     if isinstance(locators, str):
+    #         # 单个元素定位器的处理逻辑
+    #         try:
+    #             self._ele_to_be_visible_force(locators, frame_locator)  # 确保元素可见
+    #             target = self._get_target_locator(locators, frame_locator)  # 获取目标定位器
+    #             target.click()  # 点击目标元素
+    #             logger.info(f"成功点击元素: {locators}")  # 记录成功信息
+    #             return  # 点击成功，退出函数
+    #         except Exception as e:
+    #             logger.error(f"尝试点击 {locators} 失败: {e}")  # 记录失败信息
+    #             raise Exception(f"元素 {locators} 点击失败")
+    #     elif isinstance(locators, list):
+    #         # 多个元素定位器的处理逻辑
+    #         for locator in locators:
+    #             try:
+    #                 self._ele_to_be_visible_force(locator, frame_locator)  # 确保元素可见
+    #                 target = self._get_target_locator(locator, frame_locator)  # 获取目标定位器
+    #                 target.click()  # 点击目标元素
+    #                 logger.info(f"成功点击元素: {locator}")  # 记录成功信息
+    #                 return  # 点击成功，退出函数
+    #             except Exception as e:
+    #                 logger.warning(f"尝试点击 {locator} 失败: {e}")  # 记录失败信息
+    #
+    #         # 所有 locator 都尝试过但没有一个成功，抛出异常
+    #         logger.error("所有元素点击失败")
+    #         raise Exception("所有元素点击失败")
+    #     else:
+    #         # 处理无效的 locators 类型
+    #         logger.error("传入的 locators 类型无效")
+    #         raise TypeError("locators 必须是字符串或列表")
+
     def _click(self, locators: Union[str, List[str]], frame_locator: Optional[str] = None) -> None:
         """
         点击元素
@@ -38,35 +76,29 @@ class BasePage:
         :return: None
         """
         if isinstance(locators, str):
-            # 单个元素定位器的处理逻辑
-            try:
-                self._ele_to_be_visible_force(locators, frame_locator)  # 确保元素可见
-                target = self._get_target_locator(locators, frame_locator)  # 获取目标定位器
-                target.click()  # 点击目标元素
-                logger.info(f"成功点击元素: {locators}")  # 记录成功信息
-                return  # 点击成功，退出函数
-            except Exception as e:
-                logger.error(f"尝试点击 {locators} 失败: {e}")  # 记录失败信息
-                raise Exception(f"元素 {locators} 点击失败")
-        elif isinstance(locators, list):
-            # 多个元素定位器的处理逻辑
-            for locator in locators:
-                try:
-                    self._ele_to_be_visible_force(locator, frame_locator)  # 确保元素可见
-                    target = self._get_target_locator(locator, frame_locator)  # 获取目标定位器
-                    target.click()  # 点击目标元素
-                    logger.info(f"成功点击元素: {locator}")  # 记录成功信息
-                    return  # 点击成功，退出函数
-                except Exception as e:
-                    logger.warning(f"尝试点击 {locator} 失败: {e}")  # 记录失败信息
+            locators = [locators]  # 将单个元素转换为列表
 
+        if not isinstance(locators, list):
+            logger.error("传入的 locators 类型无效")
+            raise TypeError("locators 必须是字符串或列表")
+
+        click_success = False
+
+        for locator in locators:
+            try:
+                self._ele_to_be_visible_force(locator, frame_locator)  # 确保元素可见
+                target = self._get_target_locator(locator, frame_locator)  # 获取目标定位器
+                target.click()  # 点击目标元素
+                logger.info(f"成功点击元素: {locator}")  # 记录成功信息
+                click_success = True
+                break  # 点击成功，退出循环
+            except Exception as e:
+                logger.warning(f"尝试点击 {locator} 失败: {e}")  # 记录失败信息
+
+        if not click_success:
             # 所有 locator 都尝试过但没有一个成功，抛出异常
             logger.error("所有元素点击失败")
             raise Exception("所有元素点击失败")
-        else:
-            # 处理无效的 locators 类型
-            logger.error("传入的 locators 类型无效")
-            raise TypeError("locators 必须是字符串或列表")
 
     def _hover(self, locator: str, frame_locator: Optional[str] = None) -> None:
         """
@@ -102,6 +134,7 @@ class BasePage:
                 target = self._get_target_locator(loc, frame_locator)
                 target.click()
                 target.fill(value)
+                logger.info(f"{value}填入成功")
                 return  # 成功填充后退出函数
             except Exception as e:
                 logger.warning(f"定位器 {loc} 失败: {e}")
@@ -173,7 +206,7 @@ class BasePage:
             option_element = self._get_target_locator(option_locator, frame_locator)
             option_element.click()
 
-    def _select_date(self, date_placeholder: str, frame_locator: Optional[str] = None) -> None:
+    def _select_date(self, date_placeholder: str, date_select: str, frame_locator: Optional[str] = None) -> None:
         """
         选择日期的封装函数
         :param date_placeholder: 日期选择框的占位符文本
@@ -185,10 +218,10 @@ class BasePage:
             # 获取当前日期
             current_date = datetime.now()
             date_to_select = str(current_date.day)
-            logger.info("{date_to_select}")
+            logger.info(f"{date_to_select}")
 
             # 寻找并选择当前日期
-            date_element = self._get_target_locator(frame_locator).get_by_text(date_to_select, exact=True)
+            date_element = self._get_target_locator(date_select, frame_locator).get_by_text(date_to_select, exact=True)
             if date_element.count() > 0:  # 确保找到元素
                 date_element.click()
             else:
@@ -379,6 +412,3 @@ class BasePage:
     def get_current_time_format():
         """ 获取当前时间并转换为 'HHMM' 格式 """
         return datetime.now().strftime("%H%M")
-
-
-
