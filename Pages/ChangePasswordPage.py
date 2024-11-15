@@ -13,6 +13,7 @@ logger = Logger("ChangePasswordPage").get_log()
 
 
 class ChangePasswordPage(BasePage):
+    """修改密码页面操作"""
     data = load_and_validate_yaml(r'..\TestDatas\EleData\ChangePasswordPage.yaml')
     image_path = r'..\TestFiles\code_images.png'
 

@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# @File    : TestOnSiteAssessment.yaml
+# @Date    : 2024/11/14 10:57
+# @Author  : ggn
+
+-
+  expect: '//*[@id="swal2-title"]'
+  expect_text: '现场评定完成'
+  iframe: ['//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']

@@ -10,7 +10,7 @@ from Pages.UnitSealPage import UnitSealPage
 from TestCases.Base import Base
 from Utils.Util_yaml import load_and_validate_yaml
 
-logger = Logger("TestDeputy").get_log()
+logger = Logger("TestUnitSeal").get_log()
 
 
 class TestUnitSealSJ(object):

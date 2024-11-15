@@ -25,7 +25,7 @@ class TestDataReviewSJ(object):
         self.login.login(self.login_data)
         self.test_DataReview = DataReviewPage(page)
 
-    @pytest.mark.run(order=3)
+    # @pytest.mark.run(order=3)
     @pytest.mark.parametrize('project_data', param_data)
     def test_data_review_design(self, project_data):
         """

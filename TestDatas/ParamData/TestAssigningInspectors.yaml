@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# @File    : TestAssigningInspectors.yaml
+# @Date    : 2024/11/13 16:18
+# @Author  : ggn
+-
+  expect: '//*[@id="swal2-title"]'
+  expect_text: '分配检查人员完成'
+  iframe: ['//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']

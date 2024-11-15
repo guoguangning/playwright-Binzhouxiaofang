@@ -10,7 +10,7 @@ from Pages.ConstructionUnitDeclarationPage import ConstructionUnitDeclarationPag
 from TestCases.Base import Base
 from Utils.Util_yaml import load_and_validate_yaml
 
-logger = Logger("TestDeputy").get_log()
+logger = Logger("TestConstructionUnitDeclaration").get_log()
 
 
 class TestConstructionUnitDeclaration(object):
