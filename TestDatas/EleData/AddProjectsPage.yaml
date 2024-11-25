@@ -46,3 +46,8 @@ expected_text_record: '确定发起消防设施安装工程消防设施安装-1�
 
 ok_button: '//div[@class="el-message-box__btns"]/button[2]' # 创建确认按钮
 cancel_button: '//div[@class="el-message-box__btns"]/button[1]' # 创建取消按钮
+
+ass_expected: '//*[@id="swal2-content"]'
+ass_expected_text: '新建建设工程消防设计审查完成，系统已将该项目发送至帮办人员进行帮办，帮办完成后请点击流程中【S2】填写《特殊建设工程消防设计审查申请表》。'
+ass_expected_text_inspection: '新建建设工程消防验收完成，点击【关闭】后，请点击流程中的【Y1】填写《特殊建设工程消防验收申请表》。'
+ass_expected_text_record: '新建建设工程消防备案完成，点击【关闭】后，请点击流程中的【B1】填写《建设工程消防验收备案表》。'

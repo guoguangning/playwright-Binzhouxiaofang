@@ -183,6 +183,7 @@ class AddProjectsPage(BasePage):
             raise
 
     def click_ok_button(self):
+        """新建建设工程消防设计审查"""
         try:
             if self._ele_to_be_expect(self.data['expected'], self.data['expected_text'], self.data['iframe']):
                 self._click(self.data['ok_button'], self.data['iframe'])
@@ -212,4 +213,34 @@ class AddProjectsPage(BasePage):
                 return True
         except Exception as e:
             logger.error(f"Failed to click 创建完毕提示：二次确认按钮: {e}")
+            return False
+
+    def assert_design_review(self):
+        """消防设计审查断言"""
+        try:
+            if self._ele_to_be_expect(self.data['ass_expected'], self.data['ass_expected_text'], self.data['iframe']):
+                logger.info("assert_design_review")
+                return True
+        except Exception as e:
+            logger.error(f"Failed to assert_design_review: {e}")
+            return False
+
+    def assert_inspection(self):
+        """消防验收断言"""
+        try:
+            if self._ele_to_be_expect(self.data['ass_expected'], self.data['ass_expected_text_inspection'], self.data['iframe']):
+                logger.info("assert_inspection")
+                return True
+        except Exception as e:
+            logger.error(f"Failed to assert_inspection: {e}")
+            return False
+
+    def assert_record(self):
+        """消防验收备案断言"""
+        try:
+            if self._ele_to_be_expect(self.data['ass_expected'], self.data['ass_expected_text_record'], self.data['iframe']):
+                logger.info("assert_record")
+                return True
+        except Exception as e:
+            logger.error(f"Failed to assert_record: {e}")
             return False

@@ -18,8 +18,6 @@ class TestAddProjects(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[0]
 
-    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestAddProjects.yaml')
-
     @pytest.fixture(autouse=True)
     def set_up(self, page):
         """在每个测试用例前执行"""
@@ -28,8 +26,7 @@ class TestAddProjects(object):
         self.test_AddProjects = AddProjectsPage(page)
 
     # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_add_design_review(self, project_data):
+    def test_add_design_review(self):
         """
         测试新建建设工程消防设计审查
         """
@@ -37,7 +34,7 @@ class TestAddProjects(object):
             self._navigate_to_add_design_review()
             self._add_design_review()
             self._save_design_review()
-            if self._assert_design_review(project_data):
+            if self._assert_design_review():
                 logger.info('新建建设工程消防设计审查成功')
         except Exception as e:
             logger.error(f"新建建设工程消防设计审查失败: {e}")
@@ -60,18 +57,16 @@ class TestAddProjects(object):
         self.test_AddProjects.click_add_construction_design_review_button()
         self.test_AddProjects.click_ok_button()
 
-    def _assert_design_review(self, project_data):
+    def _assert_design_review(self):
         try:
-            self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text'],
-                                                    project_data['iframe'])
+            self.test_AddProjects.assert_design_review()
             return True
         except Exception as e:
             logger.error(f"断言不可见: {e}")
             return False
 
     # # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_add_inspection(self, project_data):
+    def test_add_inspection(self):
         """
         测试新建建设工程消防验收
         """
@@ -79,7 +74,7 @@ class TestAddProjects(object):
             self._navigate_to_add_inspection()
             self._add_inspection()
             self._save_inspection()
-            if self._assert_inspection(project_data):
+            if self._assert_inspection():
                 logger.info('新建建设工程消防验收成功')
         except Exception as e:
             logger.error(f"新建建设工程消防验收失败: {e}")
@@ -101,18 +96,16 @@ class TestAddProjects(object):
         self.test_AddProjects.click_added_button()
         self.test_AddProjects.click_ok_inspection_button()
 
-    def _assert_inspection(self, project_data):
+    def _assert_inspection(self):
         try:
-            self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text_inspection'],
-                                                    project_data['iframe'])
+            self.test_AddProjects.assert_inspection()
             return True
         except Exception as e:
             logger.error(f"断言不可见: {e}")
             return False
 
     # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_add_record(self, project_data):
+    def test_add_record(self):
         """
         测试新建建设工程消防备案-非一般项目
         """
@@ -120,7 +113,7 @@ class TestAddProjects(object):
             self._navigate_to_add_record()
             self._add_record()
             self._save_record()
-            if self._assert_record(project_data):
+            if self._assert_record():
                 logger.info('新建建设工程消防备案成功')
         except Exception as e:
             logger.error(f"新建建设工程消防备案失败: {e}")
@@ -143,18 +136,16 @@ class TestAddProjects(object):
         self.test_AddProjects.click_added_button()
         self.test_AddProjects.click_ok_record_button()
 
-    def _assert_record(self, project_data):
+    def _assert_record(self):
         try:
-            self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text_record'],
-                                                    project_data['iframe'])
+            self.test_AddProjects.assert_record()
             return True
         except Exception as e:
             logger.error(f"断言不可见: {e}")
             return False
 
     # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_add_record_method(self, project_data):
+    def test_add_record_method(self):
         """
         测试新建建设工程消防备案-一般项目
         """
@@ -162,7 +153,7 @@ class TestAddProjects(object):
             self._navigate_to_add_record_method()
             self._add_record_method()
             self._save_record_method()
-            if self._assert_record_method(project_data):
+            if self._assert_record():
                 logger.info('新建建设工程消防备案成功')
         except Exception as e:
             logger.error(f"新建建设工程消防备案失败: {e}")
@@ -186,15 +177,6 @@ class TestAddProjects(object):
     def _save_record_method(self):
         self.test_AddProjects.click_added_button()
         self.test_AddProjects.click_ok_record_button()
-
-    def _assert_record_method(self, project_data):
-        try:
-            self.test_AddProjects._ele_to_be_expect(project_data['expected'], project_data['expected_text_record'],
-                                                    project_data['iframe'])
-            return True
-        except Exception as e:
-            logger.error(f"断言不可见: {e}")
-            return False
 
 
 if __name__ == '__main__':
