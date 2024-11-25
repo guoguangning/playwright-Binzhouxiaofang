@@ -90,3 +90,12 @@ class ChangePasswordPage(BasePage):
         except Exception as e:
             logger.error(f"Failed to click submit button: {e}")
             raise
+
+    def ele_assert_change_password(self):
+        try:
+            self._ele_to_be_expect(self.data['expected'], self.data['expected_text'])
+            logger.info("ele_assert_change_password")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_change_password: {e}")
+            return False

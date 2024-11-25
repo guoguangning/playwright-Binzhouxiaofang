@@ -45,3 +45,12 @@ class LoginPage(BasePage):
         except Exception as e:
             logger.error(f"Failed to click login button: {e}")
             raise
+
+    def ele_assert_login(self):
+        try:
+            self._ele_to_be_expect(self.data['expected'])
+            logger.info("ele_assert_login")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_login: {e}")
+            return False

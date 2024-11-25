@@ -5,4 +5,3 @@
 -
   username: '15154385201'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'

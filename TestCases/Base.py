@@ -24,8 +24,7 @@ class Base(BasePage):
             self.login_page.fill_username(login_data['username'])
             self.login_page.fill_password(login_data['password'])
             self.login_page.click_login_button()
-
-            if self.login_page._ele_to_be_expect(login_data['expected']):
+            if self.login_page.ele_assert_login():
                 logger.info("登录成功")
         except Exception as e:
             logger.error(f"登录失败: {e}")

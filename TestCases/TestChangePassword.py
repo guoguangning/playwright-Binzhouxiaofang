@@ -31,7 +31,7 @@ class TestChangePassword(object):
             self.ChangePassword.fill_enter_again_new_password(project_data['new_password'])
             self.ChangePassword.click_submit_button()
 
-            if self.ChangePassword._ele_to_be_expect(project_data['expected'], project_data['expected_text']):
+            if self.ChangePassword.ele_assert_change_password():
                 logger.info("修改密码成功")
         except Exception as e:
             logger.error(f"修改密码失败: {e}")
