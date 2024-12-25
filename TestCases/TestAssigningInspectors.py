@@ -17,8 +17,6 @@ class TestAssigningInspectors(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[1]
 
-    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestAssigningInspectors.yaml')
-
     @pytest.fixture(autouse=True)
     def set_up(self, page):
         """在每个测试用例前执行"""
@@ -26,16 +24,29 @@ class TestAssigningInspectors(object):
         self.login.login(self.login_data)
         self.test_AssigningInspectors = AssigningInspectorsPage(page)
 
-    # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_assigning_inspectors(self, project_data):
+    @pytest.mark.run(order=3)
+    def test_assigning_inspectors_acceptance(self):
         """
         测试分配查验人员 消防验收
         """
         try:
             self._navigate_to_assigning_inspectors()
-            self._assigning_inspectors()
-            if self._assert_assigning_inspectors(project_data):
+            self._assigning_inspectors_acceptance()
+            if self._assert_assigning_inspectors():
+                logger.info('分配查验人员完成')
+        except Exception as e:
+            logger.error(f"分配查验人员失败: {e}")
+            raise
+
+    @pytest.mark.run(order=3)
+    def test_assigning_inspectors_record(self):
+        """
+        测试分配查验人员 消防验收备案
+        """
+        try:
+            self._navigate_to_assigning_inspectors()
+            self._assigning_inspectors_record()
+            if self._assert_assigning_inspectors():
                 logger.info('分配查验人员完成')
         except Exception as e:
             logger.error(f"分配查验人员失败: {e}")
@@ -45,17 +56,23 @@ class TestAssigningInspectors(object):
         self.test_AssigningInspectors.goto_assigning_inspectors_page()
         self.test_AssigningInspectors.click_xf()
 
-    def _assigning_inspectors(self):
+    def _assigning_inspectors_acceptance(self):
         self.test_AssigningInspectors.click_construction_acceptance_list()
         self.test_AssigningInspectors.click_enter_project_page()
-        self.test_AssigningInspectors.click_assigning_inspectors()
+        self.test_AssigningInspectors.click_assigning_inspectors_acceptance()
         self.test_AssigningInspectors.click_assign_personnel()
         self.test_AssigningInspectors.click_assigned()
 
-    def _assert_assigning_inspectors(self, project_data):
+    def _assigning_inspectors_record(self):
+        self.test_AssigningInspectors.click_record_list()
+        self.test_AssigningInspectors.click_enter_project_page()
+        self.test_AssigningInspectors.click_assigning_inspectors_records()
+        self.test_AssigningInspectors.click_assign_personnel()
+        self.test_AssigningInspectors.click_assigned()
+
+    def _assert_assigning_inspectors(self):
         try:
-            self.test_AssigningInspectors._ele_to_be_expect(project_data['expected'], project_data['expected_text'],
-                                                            project_data['iframe'])
+            self.test_AssigningInspectors.assert_assigning_inspectors()
             return True
         except Exception as e:
             logger.error(f"断言失败: {e}")

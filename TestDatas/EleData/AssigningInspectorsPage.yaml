@@ -3,23 +3,54 @@
 # @Date    : 2024/11/13 16:04
 # @Author  : ggn
 
-# 分配检查人员 消防验收
-# 进入消防
-path: '/selectSystem?type=2'
-xf: '//*[@id="xf"]'
+-
+  # 分配检查人员 消防验收
+  # 进入消防
+  path: '/selectSystem?type=2'
+  xf: '//*[@id="xf"]'
 
-# 项目列表
-construction_acceptance_list: '//*[@id="nav"]/li[2]/ul/li[2]'
+  # 项目列表
+  construction_acceptance_list: '//*[@id="nav"]/li[2]/ul/li[2]'
 
-# 审查项目列表 进入项目页面
-iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
-enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
-# 分配检查人员
-assigning_inspectors: '//*[@id="app"]/form/div/div[2]/div[4]/div/div[2]/div[1]' # iframe
+  # 审查项目列表 进入项目页面
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
+  # 分配检查人员-Y4
+  assigning_inspectors: '//*[@id="app"]/form/div/div[2]/div[4]/div/div[2]/div[1]' # iframe
 
-# 选择人员
-iframe2: ['//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
-assign_personnel: '//*[@id="app"]/div/div[1]/div[2]/ul/li[text()="汪洪星"]' # iframe2
+  # 选择人员
+  iframe2: [ '//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe' ]
+  assign_personnel: '//*[@id="app"]/div/div[1]/div[2]/ul/li[text()="汪洪星"]' # iframe2
 
-# 分配完毕
-assigned: '//*[@id="next_step"]' # iframe2
+  # 分配完毕
+  assigned: '//*[@id="next_step"]' # iframe2
+
+  #断言
+  expect: '//*[@id="swal2-title"]' # iframe2
+  expect_text: '分配检查人员完成'
+
+-
+  # 分配检查人员 消防验收备案
+  # 进入消防
+  path: '/selectSystem?type=2'
+  xf: '//*[@id="xf"]'
+
+  # 项目列表
+  record_list: '//*[@id="nav"]/li[2]/ul/li[3]'
+
+  # 审查项目列表 进入项目页面
+  iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'  # iframe
+  # 分配检查人员-BJ1
+  assigning_inspectors_record: '//*[@id="app"]/form/div/div/div[3]/div[4]/div[1]/div/div/div[1]' # iframe
+
+  # 选择人员
+  iframe2: [ '//*[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe' ]
+  assign_personnel: '//*[@id="app"]/div/div[1]/div[2]/ul/li[text()="汪洪星"]' # iframe2
+
+  # 分配完毕
+  assigned: '//*[@id="next_step"]' # iframe2
+
+  #断言
+  expect: '//*[@id="swal2-title"]' # iframe2
+  expect_text: '分配检查人员完成'
