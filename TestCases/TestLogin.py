@@ -13,9 +13,8 @@ logger = Logger("TestLogin").get_log()
 
 
 class TestLogin:
-    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestLogin.yaml')
+    param_data = load_and_validate_yaml(r'..\playwright-Binzhouxiaofang\TestDatas\ParamData\TestLogin.yaml')
 
-    @pytest.mark.run(order=1)
     @pytest.mark.parametrize('login_data', param_data)
     def test_login(self, login_data, page):
         """测试登录功能"""

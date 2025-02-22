@@ -12,7 +12,7 @@ construction_design_review_list: '//*[@id="nav"]/li[2]/ul/li[1]/a'
 
 # 审查项目列表 进入项目页面
 iframe: '//*[@class="layui-tab-item layui-show"]/iframe'
-enter_project_page: '//div[text()="消防设施安装工程"]/ancestor::tr//td/div/a[text()="进入项目页面"]'
+enter_project_page: '//div[text()="希望小学项目"]/ancestor::tr//td/div/a[text()="进入项目页面"]'
 
 # 项目页面 帮办
 deputy: '//div[@class="time-box"]/div[1]/div/div[1]'  # iframe
@@ -40,3 +40,6 @@ expected_text: '确认帮办服务完成?'
 confirm_button: '//div[@class="swal2-actions"]/button[text()="确认"]'
 
 
+#
+expected_: '//h2[@id="swal2-title"]'
+expected_text_: '帮办完成'

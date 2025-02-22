@@ -13,11 +13,11 @@ new_record: '//*[@id="nav"]/li[2]/ul/li[3]/a'  # 新建建设工程消防备案
 iframe: '//*[@class="layui-layer-content"]/iframe'
 
 select_project_name: '//div[@class="content"]/div[1]/div[1]/div/div/span[1]'  #选择项目
-select_project: '//div[text()="*-BZ-20241016-051"]'
+select_project: '//div[text()="*-BZ-20241219-052"]'
 confirm_button: '//div[@class="dialog-footer"]/button[1]'
 
 select_engineering_name: '//div[@class="content"]/div[1]/div[2]/div/div/span[1]' # 选择工程
-select_engineering: '//div[text()="*-BZ-20241016-051-001"]'
+select_engineering: '//div[text()="*-BZ-20241219-052-001"]'
 confirm_engineering_button: '//div[@class="dialog-footer"]/button[1]'
 
 category: '新建扩建改建'  # 类别 新建扩建改建
@@ -40,9 +40,9 @@ add_construction_design_review_button: '//*[@id="vue_div"]/div[1]/button[text()=
 added: '//*[@id="vue_div"]/div[1]/button[text()="创建完毕"]'  # 新建建设工程消防验收 新建建设工程消防备案
 
 expected: '//div[@class="el-message-box__message"]/p'
-expected_text: '确定发起消防设施安装工程消防设施安装-1的消防设计审查吗？点击[确定]后，系统将该项目发送至帮办人员进行帮办。'  # 新建建设工程消防设计审查
-expected_text_inspection: '确定发起消防设施安装工程消防设施安装-1的消防验收吗？' # 新建建设工程消防验收
-expected_text_record: '确定发起消防设施安装工程消防设施安装-1的消防备案吗？' # 新建建设工程消防备案
+expected_text: '确定发起希望小学项目教学楼的消防设计审查吗？点击[确定]后，系统将该项目发送至帮办人员进行帮办。'  # 新建建设工程消防设计审查
+expected_text_inspection: '确定发起希望小学项目教学楼的消防验收吗？' # 新建建设工程消防验收
+expected_text_record: '确定发起希望小学项目教学楼的消防备案吗？' # 新建建设工程消防备案
 
 ok_button: '//div[@class="el-message-box__btns"]/button[2]' # 创建确认按钮
 cancel_button: '//div[@class="el-message-box__btns"]/button[1]' # 创建取消按钮

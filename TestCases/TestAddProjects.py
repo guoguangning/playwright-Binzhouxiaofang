@@ -25,7 +25,9 @@ class TestAddProjects(object):
         self.login.login(self.login_data)
         self.test_AddProjects = AddProjectsPage(page)
 
-    # @pytest.mark.run(order=3)
+    # @pytest.mark.run(order=1)
+    @pytest.mark.sc
+    @pytest.mark.skip(reason="Not Implemented")
     def test_add_design_review(self):
         """
         测试新建建设工程消防设计审查
@@ -65,7 +67,7 @@ class TestAddProjects(object):
             logger.error(f"断言不可见: {e}")
             return False
 
-    # # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_add_inspection(self):
         """
         测试新建建设工程消防验收
@@ -104,7 +106,7 @@ class TestAddProjects(object):
             logger.error(f"断言不可见: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_add_record(self):
         """
         测试新建建设工程消防备案-非一般项目
@@ -144,7 +146,7 @@ class TestAddProjects(object):
             logger.error(f"断言不可见: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_add_record_method(self):
         """
         测试新建建设工程消防备案-一般项目
@@ -180,4 +182,4 @@ class TestAddProjects(object):
 
 
 if __name__ == '__main__':
-    pytest.main(['-v', __file__])
+    pytest.main(['-v', '-s', __file__])

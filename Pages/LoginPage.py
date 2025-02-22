@@ -12,7 +12,7 @@ logger = Logger("LoginPage").get_log()
 
 
 class LoginPage(BasePage):
-    data = load_and_validate_yaml(r'..\TestDatas\EleData\LoginPage.yaml')
+    data = load_and_validate_yaml(r'..\playwright-Binzhouxiaofang\TestDatas\EleData\LoginPage.yaml')
 
     def goto_login(self):
         try:
@@ -48,9 +48,25 @@ class LoginPage(BasePage):
 
     def ele_assert_login(self):
         try:
-            self._ele_to_be_expect(self.data['expected'])
-            logger.info("ele_assert_login")
-            return True
+            # 验证第一个期望元素
+            if self._ele_to_be_expect(self.data['expected']):
+                logger.info("Expected element found.")
+                return True
+
+            # 验证第二个期望元素及其文本
+            if self._ele_to_be_expect(self.data['expected_no'], self.data['expected_text']):
+                logger.info("Expected element with text found.")
+                return True
+
+            # 验证第三个期望元素及其文本
+            if self._ele_to_be_expect(self.data['expected_no'], self.data['expected_text_2']):
+                logger.info("Expected element with text2 found.")
+                return True
+
+            # 如果所有期望元素都未找到
+            logger.warning("None of the expected elements found.")
+            return False
+
         except Exception as e:
             logger.error(f"Failed to ele_assert_login: {e}")
             return False

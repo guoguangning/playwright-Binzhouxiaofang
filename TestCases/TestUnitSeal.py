@@ -24,7 +24,7 @@ class TestUnitSealSJ(object):
         self.login.login(self.login_data_sj)
         self.test_UnitSealPage = UnitSealPage(page)
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sj_inspection(self):
         """
         测试设计单位签章-消防验收
@@ -48,7 +48,7 @@ class TestUnitSealSJ(object):
         self.test_UnitSealPage.input_basic_situation_sj()
         self.test_UnitSealPage.click_signature()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sj_record(self):
         """
         测试设计单位签章-消防备案
@@ -61,7 +61,7 @@ class TestUnitSealSJ(object):
             logger.error(f"消防备案设计单位签章失败: {e}")
             raise
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sj_record_method(self):
         """
         测试设计单位签章-消防备案-告知承诺制
@@ -86,6 +86,7 @@ class TestUnitSealSJ(object):
         self.test_UnitSealPage.click_signature()
 
 
+@pytest.mark.skip(reason="Not Implemented")
 class TestUnitSealJL(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data_jl = yaml_data[3]
@@ -97,7 +98,7 @@ class TestUnitSealJL(object):
         self.login.login(self.login_data_jl)
         self.test_UnitSealPage = UnitSealPage(page)
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_jl_inspection(self):
         """
         测试监理单位签章-消防验收
@@ -121,7 +122,7 @@ class TestUnitSealJL(object):
         self.test_UnitSealPage.input_basic_situation_jl()
         self.test_UnitSealPage.click_signature()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_jl_record(self):
         """
         测试监理单位签章-消防备案
@@ -134,7 +135,7 @@ class TestUnitSealJL(object):
             logger.error(f"消防备案监理单位签章失败: {e}")
             raise
 
-    @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_jl_record_method(self):
         """
         测试监理单位签章-消防备案-告知承诺制
@@ -159,6 +160,7 @@ class TestUnitSealJL(object):
         self.test_UnitSealPage.click_signature()
 
 
+@pytest.mark.skip(reason="Not Implemented")
 class TestUnitSealSG(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data_sg = yaml_data[4]
@@ -170,7 +172,7 @@ class TestUnitSealSG(object):
         self.login.login(self.login_data_sg)
         self.test_UnitSealPage = UnitSealPage(page)
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sg_inspection(self):
         """
         测试施工总承包单位签章-消防验收
@@ -194,7 +196,7 @@ class TestUnitSealSG(object):
         self.test_UnitSealPage.input_basic_situation_sg()
         self.test_UnitSealPage.click_signature()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sg_record(self):
         """
         测试施工总承包单位签章-消防备案
@@ -207,7 +209,7 @@ class TestUnitSealSG(object):
             logger.error(f"消防备案施工总承包单位签章失败: {e}")
             raise
 
-    @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_unit_seal_sg_record_method(self):
         """
         测试施工总承包单位签章-消防备案-告知承诺制

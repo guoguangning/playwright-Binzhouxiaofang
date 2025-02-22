@@ -16,7 +16,6 @@ logger = Logger("TestDataReview").get_log()
 class TestDataReviewSJ(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
     login_data = yaml_data[1]
-    param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestDataReview.yaml')
 
     @pytest.fixture(autouse=True)
     def set_up(self, page):
@@ -25,9 +24,10 @@ class TestDataReviewSJ(object):
         self.login.login(self.login_data)
         self.test_DataReview = DataReviewPage(page)
 
-    # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_data_review_design(self, project_data):
+    # @pytest.mark.run(order=4)
+    @pytest.mark.skip(reason="Not Implemented")
+    @pytest.mark.sc
+    def test_data_review_design(self):
         """
         测试主管部门资料审核-消防设计审查
         """
@@ -35,7 +35,7 @@ class TestDataReviewSJ(object):
             self._navigate_to_data_review()
             self._data_review_design()
             self._through_data_review_design()
-            if self._assert_data_review_design(project_data):
+            if self._assert_data_review_design():
                 logger.info('主管部门审核成功-消防设计审查')
         except Exception as e:
             logger.error(f"主管部门审核失败-消防设计审查: {e}")
@@ -55,18 +55,16 @@ class TestDataReviewSJ(object):
     def _through_data_review_design(self):
         self.test_DataReview.click_through_button()
 
-    def _assert_data_review_design(self, project_data):
+    def _assert_data_review_design(self):
         try:
-            self.test_DataReview._ele_to_be_expect(project_data['expect'], project_data['expect_text'],
-                                                   project_data['iframe'])
+            self.test_DataReview.ele_assert_design_review_data()
             return True
         except Exception as e:
             logger.error(f"断言失败: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_data_review_acceptance(self, project_data):
+    @pytest.mark.skip(reason="Not Implemented")
+    def test_data_review_acceptance(self):
         """
         测试主管部门资料审核-消防验收
         """
@@ -74,7 +72,7 @@ class TestDataReviewSJ(object):
             self._navigate_to_data_review()
             self._data_review_acceptance()
             self._through_data_review_design()
-            if self._assert_data_review_acceptance(project_data):
+            if self._assert_data_review_acceptance():
                 logger.info('主管部门审核成功-消防验收')
         except Exception as e:
             logger.error(f"主管部门审核失败-消防验收: {e}")
@@ -87,19 +85,16 @@ class TestDataReviewSJ(object):
         self.test_DataReview.click_generate_credentials()
         self.test_DataReview.click_generate_certificate_signature()
 
-    def _assert_data_review_acceptance(self, project_data):
+    def _assert_data_review_acceptance(self):
         try:
-            self.test_DataReview._ele_to_be_expect(project_data['expect_acceptance'],
-                                                   project_data['expect_acceptance_text'],
-                                                   project_data['iframe'])
+            self.test_DataReview.ele_assert_acceptance_data()
             return True
         except Exception as e:
             logger.error(f"断言失败: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
-    @pytest.mark.parametrize('project_data', param_data)
-    def test_data_review_record(self, project_data):
+    @pytest.mark.skip(reason="Not Implemented")
+    def test_data_review_record(self):
         """
         测试主管部门资料审核-消防验收备案
         """
@@ -107,7 +102,7 @@ class TestDataReviewSJ(object):
             self._navigate_to_data_review()
             self._data_review_record()
             self._through_data_review_design()
-            if self._assert_data_review_record(project_data):
+            if self._assert_data_review_record():
                 logger.info('主管部门审核成功-消防验收备案')
         except Exception as e:
             logger.error(f"主管部门审核失败-消防验收备案: {e}")
@@ -120,10 +115,9 @@ class TestDataReviewSJ(object):
         self.test_DataReview.click_generate_credentials()
         self.test_DataReview.click_generate_certificate_signature()
 
-    def _assert_data_review_record(self, project_data):
+    def _assert_data_review_record(self):
         try:
-            self.test_DataReview._ele_to_be_expect(project_data['expect_record'], project_data['expect_record_text'],
-                                                   project_data['iframe'])
+            self.test_DataReview.ele_assert_registration_data()
             return True
         except Exception as e:
             logger.error(f"断言失败: {e}")

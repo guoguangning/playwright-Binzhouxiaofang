@@ -96,3 +96,13 @@ class DeputyPage(BasePage):
         except Exception as e:
             logger.error(f"Failed to click deputy_service_completed: {e}")
             raise
+
+    def ele_assert_deputy(self):
+        """帮办完成断言"""
+        try:
+            self._ele_to_be_expect(self.data['expected_'], self.data['expected_text_'], self.data['iframe2'])
+            logger.info("ele_assert_deputy")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_deputy: {e}")
+            return False

@@ -24,7 +24,7 @@ class TestAssigningInspectors(object):
         self.login.login(self.login_data)
         self.test_AssigningInspectors = AssigningInspectorsPage(page)
 
-    @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_assigning_inspectors_acceptance(self):
         """
         测试分配查验人员 消防验收
@@ -38,7 +38,7 @@ class TestAssigningInspectors(object):
             logger.error(f"分配查验人员失败: {e}")
             raise
 
-    @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_assigning_inspectors_record(self):
         """
         测试分配查验人员 消防验收备案

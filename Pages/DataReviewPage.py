@@ -135,3 +135,39 @@ class DataReviewPage(BasePage):
         except Exception as e:
             logger.error(f"Failed to click through_button: {e}")
             raise
+
+    def ele_assert_design_review_data(self):
+        """主管部门审核完成断言-设计审查"""
+        try:
+            self._ele_to_be_expect(self.design_review_data['expect_review'],
+                                   self.design_review_data['expect_text_review'],
+                                   self.design_review_data['iframe2'])
+            logger.info("ele_assert_design_review_data")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_design_review_data: {e}")
+            return False
+
+    def ele_assert_acceptance_data(self):
+        """主管部门审核完成断言-验收"""
+        try:
+            self._ele_to_be_expect(self.acceptance_data['expect_acceptance'],
+                                   self.acceptance_data['expect_acceptance_text'],
+                                   self.acceptance_data['iframe2'])
+            logger.info("ele_assert_acceptance_data")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_acceptance_data: {e}")
+            return False
+
+    def ele_assert_registration_data(self):
+        """主管部门审核完成断言-备案"""
+        try:
+            self._ele_to_be_expect(self.registration_data['expect_record'],
+                                   self.registration_data['expect_record_text'],
+                                   self.registration_data['iframe2'])
+            logger.info("ele_assert_registration_data")
+            return True
+        except Exception as e:
+            logger.error(f"Failed to ele_assert_registration_data: {e}")
+            return False

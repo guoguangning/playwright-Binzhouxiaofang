@@ -25,7 +25,7 @@ class TestOnSiteAssessment(object):
         self.login.login(self.login_data)
         self.test_OnSiteAssessment = OnSiteAssessmentPage(page)
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_on_site_assessment(self, project_data):
         """

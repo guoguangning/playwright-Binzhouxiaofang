@@ -4,30 +4,30 @@
 # @Author  : ggn
 -
   # 建设单位
-  username: '15154385201'
+  username: '13400000001'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'
 
 -
   # 主管部门
   username: '13954337299'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'
 
 -
   # 设计单位
   username: '13200009658'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'
 
 -
   # 监理单位
   username: '16665433456'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'
 
 -
   # 施工总承包单位
   username: '13200007458'
   password: 'aa147258.'
-  expected: '//*[@id="title"]'
+
+-
+  # 帮办
+  username: '17806288908'
+  password: 'aa147258.'

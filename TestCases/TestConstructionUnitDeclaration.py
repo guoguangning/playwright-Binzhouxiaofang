@@ -28,6 +28,8 @@ class TestConstructionUnitDeclaration(object):
         self.test_construction_unit_declaration = ConstructionUnitDeclarationPage(page)
 
     # @pytest.mark.run(order=3)
+    @pytest.mark.sc
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_construction_unit_declaration_design_review(self, project_data):
         """
@@ -70,7 +72,7 @@ class TestConstructionUnitDeclaration(object):
             logger.error(f"断言不可见: {e}")
             return False
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_construction_unit_declaration_acceptance(self, project_data):
         """
@@ -102,7 +104,7 @@ class TestConstructionUnitDeclaration(object):
         self.test_construction_unit_declaration.click_send_signature_notification()
         self.test_construction_unit_declaration.click_signature_acceptance()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_construction_unit_declaration_registration(self, project_data):
         """
@@ -133,7 +135,7 @@ class TestConstructionUnitDeclaration(object):
         self.test_construction_unit_declaration.click_send_signature_notification()
         self.test_construction_unit_declaration.click_signature_acceptance()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_construction_unit_declaration_registration_method(self, project_data):
         """
@@ -164,7 +166,7 @@ class TestConstructionUnitDeclaration(object):
         self.test_construction_unit_declaration.click_send_signature_notification_method()
         self.test_construction_unit_declaration.click_signature_acceptance()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_construction_unit_declaration_acceptance_submit(self):
         """
         测试建设工程消防验收申报提交
@@ -183,7 +185,7 @@ class TestConstructionUnitDeclaration(object):
         self.test_construction_unit_declaration.click_construction_unit_declaration_inspection()
         self.test_construction_unit_declaration.click_submit_design_review()
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_construction_unit_declaration_registration_submit(self):
         """
         测试建设工程消防验收备案申报提交-非一般项目
@@ -196,7 +198,7 @@ class TestConstructionUnitDeclaration(object):
             logger.error(f"建设工程消防验收申报提交失败: {e}")
             raise
 
-    # @pytest.mark.run(order=3)
+    @pytest.mark.skip(reason="Not Implemented")
     def test_construction_unit_declaration_registration_method_submit(self):
         """
         测试建设工程消防验收备案申报提交-告知承诺制

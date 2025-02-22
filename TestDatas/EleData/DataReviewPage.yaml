@@ -38,12 +38,17 @@
   # 关闭窗口
   close_window: '//*[@id="vue_app"]/div[2]/button[4]'
 
-  # 通过
-  through_button: '//*[@id="next_button"]' # iframe2
+  # 通过 iframe2
+  through_button: '//*[@id="next_button"]'
+
+  #断言  iframe2
+  expect_review: '//*[@id="swal2-title"]'
+  expect_text_review: '审核完成, 已提交至预生成文书阶段'
 
 -
   # 建设工程消防验收
   iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  iframe2: ['//div[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
 
   # 项目列表
   construction_acceptance_list: '//*[@id="nav"]/li[2]/ul/li[2]'
@@ -51,12 +56,21 @@
   # 主管部门审核-Y2
   acceptance_review: '//*[@id="app"]/form/div/div[2]/div[2]/div/div[2]/div[1]'  # iframe
 
+  # 断言 iframe2
+  expect_acceptance: '//*[@id="swal2-title"]'
+  expect_acceptance_text: '资料审核完成, 已提交至分配检查人员阶段'
+
 -
   # 建设工程消防验收备案
   iframe: '//div[@class="layui-tab-item layui-show"]/iframe'
+  iframe2: ['//div[@class="layui-tab-item layui-show"]/iframe', '//div[@class="layui-layer-content"]/iframe']
 
   # 项目列表
   record_list: '//*[@id="nav"]/li[2]/ul/li[3]'
 
   # 主管部门审核-B2
   record_review: '//*[@id="app"]/form/div/div/div[2]/div[1]/div[2]/div[1]'  # iframe
+
+  # 断言
+  expect_record: '//*[@id="swal2-title"]'
+  expect_record_text: '资料审核完成, 已提交至抽取阶段'

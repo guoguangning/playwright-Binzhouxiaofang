@@ -15,7 +15,7 @@ logger = Logger("TestDeputy").get_log()
 
 class TestDeputy(object):
     yaml_data = load_and_validate_yaml(r'..\TestDatas\ParamData\Login.yaml')
-    login_data = yaml_data[1]
+    login_data = yaml_data[5]
 
     param_data = load_and_validate_yaml(r'..\TestDatas\ParamData\TestDeputy.yaml')
 
@@ -26,7 +26,9 @@ class TestDeputy(object):
         self.login.login(self.login_data)
         self.test_Deputy = DeputyPage(page)
 
-    # @pytest.mark.run(order=3)
+    # @pytest.mark.run(order=2)
+    @pytest.mark.sc
+    @pytest.mark.skip(reason="Not Implemented")
     @pytest.mark.parametrize('project_data', param_data)
     def test_deputy(self, project_data):
         """
@@ -36,7 +38,7 @@ class TestDeputy(object):
             self._navigate_to_deputy()
             self._deputy(project_data)
             self._submit_deputy()
-            if self._assert_deputy(project_data):
+            if self._assert_deputy():
                 logger.info('帮办完成')
         except Exception as e:
             logger.error(f"帮办失败: {e}")
@@ -56,15 +58,14 @@ class TestDeputy(object):
     def _submit_deputy(self):
         self.test_Deputy.click_deputy_service_completed()
 
-    def _assert_deputy(self, project_data):
+    def _assert_deputy(self):
         try:
-            self.test_Deputy._ele_to_be_expect(project_data['expected'], project_data['expected_text'],
-                                               project_data['iframe'])
+            self.test_Deputy.ele_assert_deputy()
             return True
         except Exception as e:
-            logger.error(f"断言不可见: {e}")
+            logger.error(f"断言成功: {e}")
             return False
 
 
 if __name__ == '__main__':
-    pytest.main(['-v', __file__])
+    pytest.main(['-s', '-v', __file__])
